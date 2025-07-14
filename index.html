@@ -401,7 +401,8 @@ Target es una de las principales y octavas corporaciones minoristas más grandes
     img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/eBay.webp',
     descrip: `¿Qué es eBay?
 eBay es un mercado global en línea que ayuda a las personas a comprar y vender bienes nuevos y usados, automóviles, bienes raíces, servicios y más. Es un destino para los compradores que quieren encontrar las mejores ofertas en todo, desde ropa vintage hasta autos usados. En Ebay, los productos se pueden comprar por la oferta más alta en el proceso de subasta. Pero también es posible la compra de muchos artículos por compra directa. Ebay utiliza un sistema de calificación para compradores y vendedores. Por lo tanto, uno puede estimar si es un vendedor experimentado y bueno.
-Además, puede comprar tarjetas de regalo de eBay en línea para comprar todo tipo de productos en eBay. Las tarjetas de regalo también son una excelente manera de darle a alguien exactamente lo que quiere sin tener que adivinar qué podría ser.
+Además, puede comprar tarjetas de regalo de eBay en línea para comprar todo tipo de productos en eBay. Las tarjetas de regalo también son una excelente manera de darle a alguien exactamente lo que quiere sin tener que adivinar qué podría ser.`
+  }
 ];
 
 
@@ -776,7 +777,6 @@ window.onhashchange = function(){
 };
 handleNav((location.hash || "#inicio").replace('#',''));
 
-// --------- LA LÍNEA CLAVE PARA QUE EL MENÚ FUNCIONE SIEMPRE --------
 document.querySelectorAll('.navbar-menu li a').forEach(link=>{
   link.onclick = function(e){ 
     e.preventDefault(); 
@@ -788,7 +788,6 @@ document.querySelectorAll('.navbar-menu li a').forEach(link=>{
     }
   }
 });
-// ---------------------------------------------------------------------
 </script>
 </body>
 </html>
