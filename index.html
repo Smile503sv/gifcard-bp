@@ -164,7 +164,6 @@
   <div class="banner" id="banner">
     <h1>¡Bienvenido a gifcard-bp!</h1>
     <p>Compra códigos de Xbox, PlayStation, Free Fire, Steam y más. Entrega inmediata por WhatsApp o email.</p>
-    <!-- Carrusel visual -->
     <div class="carousel-container" style="margin-top:36px;">
       <div class="carousel-slide" id="carousel-slide"></div>
       <div class="carousel-dots" id="carousel-dots"></div>
@@ -179,10 +178,10 @@
     </div>
     <div class="cart-items" id="cart-items"></div>
     <div class="cart-total" id="cart-total"></div>
-    <div class="cart-actions">
-      <button class="pay-ws-btn" onclick="pagarWhatsApp()">Pagar por WhatsApp</button>
-      <button class="pay-bac-btn" onclick="pagarBAC()">Pagar con BAC</button>
-    </div>
+  <div class="cart-actions">
+    <button class="pay-ws-btn" onclick="pagarWhatsApp()">Solicitar compra por WhatsApp</button>
+  </div>
+
   </div>
   <div class="cart-panel-bg" id="cart-bg"></div>
   <div class="footer">
@@ -191,7 +190,6 @@
     <small>Diseño inspirado en tiendas líderes, hecho con ❤️ para ti.</small>
   </div>
 <script>
-// ----------- Carrusel Destacado (personaliza tus productos destacados aquí) -------------
 const destacados = [
   {
     img: "https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp",
@@ -214,7 +212,6 @@ const destacados = [
     texto: "Compra apps, juegos, películas y más en Google Play. Entrega rápida, sin complicaciones."
   },
 ];
-// Carrusel Función
 function renderCarrusel(){
   const slide = document.getElementById("carousel-slide");
   const dots = document.getElementById("carousel-dots");
@@ -250,375 +247,90 @@ carruselMostrar(0);
 window.carruselAuto = setInterval(()=>carruselIr((carruselIdx+1)%destacados.length), 4200);
 
 const productos = [
-  {
-    cod: 'play',
-    nombre: 'PlayStation Store',
-    img: 'https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp',
-    descrip: `¡Recarga tu cuenta PlayStation y compra juegos, suscripciones, DLC y más en segundos! La tarjeta PSN es la forma más fácil y segura de disfrutar todo el contenido de PlayStation Store. Ideal para regalar o comprar sin tarjeta de crédito.`
-  },
-  {
-    cod: 'xbox',
-    nombre: 'Xbox Gift Card',
-    img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-81.webp',
-    descrip: `Añade saldo a tu cuenta Xbox para comprar juegos, contenido, membresías y más. Sin tarjetas de crédito, sin complicaciones. Canjea fácilmente desde tu consola o en línea. ¡Perfecto para gamers!`
-  },
-  {
-    cod: 'itunes',
-    nombre: 'Apple / iTunes',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
-    descrip: `Compra apps, juegos, música, películas y más en App Store y iTunes. El regalo ideal para usuarios de iPhone, iPad y Mac. Código digital, entrega inmediata.`
-  },
-  {
-    cod: 'gplay',
-    nombre: 'Google Play',
-    img: 'https://cdn.topuplive.com/uploads/images/goods/20240911/1726048096_PpXJIUWYpb.webp',
-    descrip: `Añade saldo a tu cuenta Google Play y compra apps, juegos, películas, libros y más. Canjea el código al instante desde tu dispositivo Android.`
-  },
-  {
-    cod: 'nintendo',
-    nombre: 'Nintendo eShop',
-    img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-79.webp',
-    descrip: `Compra juegos, contenido extra y más para Nintendo Switch, 3DS y Wii U. Código digital para canjear fácil en la eShop.`
-  },
-  {
-    cod: 'freefire',
-    nombre: 'Free Fire Diamonds',
-    img: 'https://cdn.topuplive.com/uploads/images/goods/20241023/1729667219_hMwSxSTqq6.webp',
-    descrip: `Recarga diamantes para tu cuenta Free Fire al instante. Obtén skins, personajes, armas y más. Entrega rápida y segura.`
-  },
-  {
-    cod: 'roblox',
-    nombre: 'Roblox Gift Card-US',
-    img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-153.webp',
-    descrip: `Agrega Robux o membresía Premium a tu cuenta Roblox. Compra accesorios, juegos y contenido exclusivo.`
-  },
-  {
-    cod: 'steam',
-    nombre: 'Steam Wallet',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg',
-    descrip: `Saldo para tu cuenta Steam. Compra juegos, DLCs, contenido y más. Canjea el código en segundos.`
-  },
-  {
-    cod: 'amazon',
-    nombre: 'Amazon Gift Card',
-    img: 'https://i.ebayimg.com/images/g/luAAAeSwUqdoZwUW/s-l1600.webp',
-    descrip: `Compra millones de productos en Amazon con esta tarjeta. Ideal para regalos o compras personales.`
-  },
-  {
-    cod: 'fortnite',
-    nombre: 'Fortnite V-Bucks',
-    img: 'https://net-revolution.com/wp-content/uploads/Recargar-Fortnite-desde-Venezuela.png',
-    descrip: `Consigue V-Bucks para comprar skins, pases de batalla y contenido exclusivo en Fortnite. Código digital, entrega inmediata.`
-  },
-  {
-    cod: 'netflix',
-    nombre: 'Netflix Gift Card',
-    img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Netflix.webp',
-    descrip: `Paga tu suscripción Netflix o regálala a quien quieras. Canjea el código y disfruta tus series y películas favoritas.`
-  },
-  {
-    cod: 'visa',
-    nombre: 'Visa Prepaid',
-    img: 'https://i.ebayimg.com/images/g/oLsAAeSwyPZocSrH/s-l1600.webp',
-    descrip: `Tarjeta prepago Visa para compras en línea en cualquier tienda que acepte Visa. Segura, anónima y fácil de usar.`
-  },
-  {
-    cod: 'pubg',
-    nombre: 'PUBG G-COIN',
-    img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-154.webp',
-    descrip: `Recarga G-COIN y compra ítems y pases de temporada en PUBG. Código digital, entrega rápida.`
-  },
-  {
-    cod: 'fifa',
-    nombre: 'FC 25 Coins',
-    img: 'https://cdn.topuplive.com/uploads/images/goods/20250523/1747992886_jOcre8DD1t.webp',
-    descrip: `Compra monedas para EA Sports FC 25 (FIFA) y mejora tu equipo en Ultimate Team.`
-  },
-  {
-    cod: 'brawl',
-    nombre: 'Brawl Stars',
-    img: 'https://cdn.topuplive.com/uploads/images/goods/20250521/1747819357_UA0cSxeWlT.webp',
-    descrip: `Recarga gemas para Brawl Stars y desbloquea personajes, skins y contenido exclusivo.`
-  },
-  {
-    cod: 'apex',
-    nombre: 'Apex Legends Mobile',
-    img: 'https://net-revolution.com/wp-content/uploads/Recargar-Apex-Legends-Venezuela.jpg',
-    descrip: `Compra monedas para Apex Legends Mobile y adquiere cosméticos, skins y pases de batalla.`
-  },
-  {
-    cod: 'crypto',
-    nombre: 'Crypto Voucher (US)',
-    img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Crypto-Voucher.webp',
-    descrip: `Compra criptomonedas fácilmente con este cupón. Canjea en línea y recibe tu cripto en minutos.`
-  },
-  {
-    cod: 'binance',
-    nombre: 'Binance Gift Card (Global)',
-    img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Binance-Gift-Card.webp',
-    descrip: `Recibe saldo directamente en tu cuenta Binance o regala criptomonedas a quien desees. Fácil, seguro e internacional.`
-  },
-  {
-    cod: 'eneba',
-    nombre: 'Eneba Gift Card (US)',
-    img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Eneba.webp',
-    descrip: `Compra juegos y productos digitales en Eneba. Código digital, sin necesidad de tarjeta de crédito.`
-  },
-  {
-    cod: 'League of Legends Gift Card',
-    nombre: 'League of Legends Gift Card',
-    img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/League-of-Legends.webp',
-    descrip: `League of Legends (LoL) es un juego MOBA (arena de batalla multijugador en línea) muy popular desarrollado y lanzado por Riot Games. RP (Riot Point) es la moneda del juego que se puede usar para comprar artículos del juego, campeones y más. Puedes comprar RP con dinero real o ganarlos completando ciertas misiones. ¡También puedes usar las tarjetas de regalo de League of Legends para comprar Riot Points! Los RP vienen en paquetes, y cada paquete contiene una cierta cantidad de RP.`
-  },
-  {
-    cod: 'twitch',
-    nombre: 'Twitch Gift Card',
-    img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Twitch.webp',
-    descrip: `Acerca de Twitch
-    
-    Twitch es una plataforma para la transmisión de video en vivo. Ya fue fundada en Estados Unidos en 2011 y es una filial de Amazon. Twitch se hizo popular debido a los numerosos jugadores que grababan sus juegos para sus comunidades. Gracias a Twitch, estos jugadores pudieron ofrecer batallas en vivo y recibir donaciones (las llamadas "cheers") de sus fanáticos. Twitch es ahora la plataforma más exitosa para videos en vivo en el sector de los juegos. En el campo de los deportes electrónicos, se destacan juegos como Fortnite, Call of Duty, Counter Strike, League of Legends y World of Warcraft. También hay una sección de música donde los músicos pueden ofrecer sesiones en vivo.`
-  },
-  {
-    cod: 'razer',
-    nombre: 'Razer Gift Card',
-    img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Razer.webp',
-    descrip: `Acerca de Razer
-Fundada en 2005, Razer fabrica hardware galardonado para juegos, incluidos periféricos y portátiles. Su plataforma de software cuenta con más de 175 millones de usuarios e incluye software popular como Razer Chroma RGB, Razer Cortex y Razer Synapse.
-
-Pero quizás la oferta más impresionante de la marca es el Razer Gold. Es un servicio de pago diseñado para jugadores de ayuda, Generación Z y millennials. De hecho, Razer Gold es uno de los servicios de pago de juegos más fiables y de confianza.
-Con las tarjetas de regalo Razer Gold, puedes comprar juegos y artículos de entretenimiento sin la molestia de usar efectivo o tarjetas de crédito.`
-  },
-  {
-    cod: 'target',
-    nombre: 'Target Gift Card',
-    img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Target.webp',
-    descrip: `Acerca de Target
-Target es una de las principales y octavas corporaciones minoristas más grandes de los Estados Unidos. Aproximadamente, Target tiene más de 1800 tiendas físicas en todo el país. Actualmente, es considerado el segundo minorista más grande de América del Norte. Ofrece una gama de productos, desde artículos esenciales para el hogar y la belleza hasta bebidas, alimentos, accesorios, ropa, decoración y mobiliario para el hogar, artículos deportivos y electrónica. Target es un destino de una sola parada donde puedes comprar lo que quieras. Ahora puedes comprar tus productos favoritos de Target utilizando tus tarjetas de regalo en Coinsbee. Es una plataforma que te permite comprar tus tarjetas de regalo utilizando tu criptomoneda.`
-  },
-  {
-    cod: 'ebay',
-    nombre: 'eBay Gift Card',
-    img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/eBay.webp',
-    descrip: `¿Qué es eBay?
-eBay es un mercado global en línea que ayuda a las personas a comprar y vender bienes nuevos y usados, automóviles, bienes raíces, servicios y más. Es un destino para los compradores que quieren encontrar las mejores ofertas en todo, desde ropa vintage hasta autos usados. En Ebay, los productos se pueden comprar por la oferta más alta en el proceso de subasta. Pero también es posible la compra de muchos artículos por compra directa. Ebay utiliza un sistema de calificación para compradores y vendedores. Por lo tanto, uno puede estimar si es un vendedor experimentado y bueno.
-Además, puede comprar tarjetas de regalo de eBay en línea para comprar todo tipo de productos en eBay. Las tarjetas de regalo también son una excelente manera de darle a alguien exactamente lo que quiere sin tener que adivinar qué podría ser.`
-  }
+  {cod: 'play', nombre: 'PlayStation Store', img: 'https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp', descrip: `¡Recarga tu cuenta PlayStation y compra juegos, suscripciones, DLC y más en segundos! La tarjeta PSN es la forma más fácil y segura de disfrutar todo el contenido de PlayStation Store. Ideal para regalar o comprar sin tarjeta de crédito.`},
+  {cod: 'xbox', nombre: 'Xbox Gift Card', img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-81.webp', descrip: `Añade saldo a tu cuenta Xbox para comprar juegos, contenido, membresías y más. Sin tarjetas de crédito, sin complicaciones. Canjea fácilmente desde tu consola o en línea. ¡Perfecto para gamers!`},
+  {cod: 'itunes', nombre: 'Apple / iTunes', img: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg', descrip: `Compra apps, juegos, música, películas y más en App Store y iTunes. El regalo ideal para usuarios de iPhone, iPad y Mac. Código digital, entrega inmediata.`},
+  {cod: 'gplay', nombre: 'Google Play', img: 'https://cdn.topuplive.com/uploads/images/goods/20240911/1726048096_PpXJIUWYpb.webp', descrip: `Añade saldo a tu cuenta Google Play y compra apps, juegos, películas, libros y más. Canjea el código al instante desde tu dispositivo Android.`},
+  {cod: 'nintendo', nombre: 'Nintendo eShop', img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-79.webp', descrip: `Compra juegos, contenido extra y más para Nintendo Switch, 3DS y Wii U. Código digital para canjear fácil en la eShop.`},
+  {cod: 'freefire', nombre: 'Free Fire Diamonds', img: 'https://cdn.topuplive.com/uploads/images/goods/20241023/1729667219_hMwSxSTqq6.webp', descrip: `Recarga diamantes para tu cuenta Free Fire al instante. Obtén skins, personajes, armas y más. Entrega rápida y segura.`},
+  {cod: 'roblox', nombre: 'Roblox Gift Card-US', img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-153.webp', descrip: `Agrega Robux o membresía Premium a tu cuenta Roblox. Compra accesorios, juegos y contenido exclusivo.`},
+  {cod: 'steam', nombre: 'Steam Wallet', img: 'https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg', descrip: `Saldo para tu cuenta Steam. Compra juegos, DLCs, contenido y más. Canjea el código en segundos.`},
+  {cod: 'amazon', nombre: 'Amazon Gift Card', img: 'https://i.ebayimg.com/images/g/luAAAeSwUqdoZwUW/s-l1600.webp', descrip: `Compra millones de productos en Amazon con esta tarjeta. Ideal para regalos o compras personales.`},
+  {cod: 'fortnite', nombre: 'Fortnite V-Bucks', img: 'https://net-revolution.com/wp-content/uploads/Recargar-Fortnite-desde-Venezuela.png', descrip: `Consigue V-Bucks para comprar skins, pases de batalla y contenido exclusivo en Fortnite. Código digital, entrega inmediata.`},
+  {cod: 'netflix', nombre: 'Netflix Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Netflix.webp', descrip: `Paga tu suscripción Netflix o regálala a quien quieras. Canjea el código y disfruta tus series y películas favoritas.`},
+  {cod: 'visa', nombre: 'Visa Prepaid', img: 'https://i.ebayimg.com/images/g/oLsAAeSwyPZocSrH/s-l1600.webp', descrip: `Tarjeta prepago Visa para compras en línea en cualquier tienda que acepte Visa. Segura, anónima y fácil de usar.`},
+  {cod: 'pubg', nombre: 'PUBG G-COIN', img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-154.webp', descrip: `Recarga G-COIN y compra ítems y pases de temporada en PUBG. Código digital, entrega rápida.`},
+  {cod: 'fifa', nombre: 'FC 25 Coins', img: 'https://cdn.topuplive.com/uploads/images/goods/20250523/1747992886_jOcre8DD1t.webp', descrip: `Compra monedas para EA Sports FC 25 (FIFA) y mejora tu equipo en Ultimate Team.`},
+  {cod: 'brawl', nombre: 'Brawl Stars', img: 'https://cdn.topuplive.com/uploads/images/goods/20250521/1747819357_UA0cSxeWlT.webp', descrip: `Recarga gemas para Brawl Stars y desbloquea personajes, skins y contenido exclusivo.`},
+  {cod: 'apex', nombre: 'Apex Legends Mobile', img: 'https://net-revolution.com/wp-content/uploads/Recargar-Apex-Legends-Venezuela.jpg', descrip: `Compra monedas para Apex Legends Mobile y adquiere cosméticos, skins y pases de batalla.`},
+  {cod: 'crypto', nombre: 'Crypto Voucher (US)', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Crypto-Voucher.webp', descrip: `Compra criptomonedas fácilmente con este cupón. Canjea en línea y recibe tu cripto en minutos.`},
+  {cod: 'binance', nombre: 'Binance Gift Card (Global)', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Binance-Gift-Card.webp', descrip: `Recibe saldo directamente en tu cuenta Binance o regala criptomonedas a quien desees. Fácil, seguro e internacional.`},
+  {cod: 'eneba', nombre: 'Eneba Gift Card (US)', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Eneba.webp', descrip: `Compra juegos y productos digitales en Eneba. Código digital, sin necesidad de tarjeta de crédito.`},
+  {cod: 'League of Legends Gift Card', nombre: 'League of Legends Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/League-of-Legends.webp', descrip: `League of Legends (LoL) es un juego MOBA (arena de batalla multijugador en línea) muy popular desarrollado y lanzado por Riot Games. RP (Riot Point) es la moneda del juego que se puede usar para comprar artículos del juego, campeones y más. Puedes comprar RP con dinero real o ganarlos completando ciertas misiones. ¡También puedes usar las tarjetas de regalo de League of Legends para comprar Riot Points! Los RP vienen en paquetes, y cada paquete contiene una cierta cantidad de RP.`},
+  {cod: 'twitch', nombre: 'Twitch Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Twitch.webp', descrip: `Acerca de Twitch\nTwitch es una plataforma para la transmisión de video en vivo. Ya fue fundada en Estados Unidos en 2011 y es una filial de Amazon. Twitch se hizo popular debido a los numerosos jugadores que grababan sus juegos para sus comunidades. Gracias a Twitch, estos jugadores pudieron ofrecer batallas en vivo y recibir donaciones (las llamadas "cheers") de sus fanáticos. Twitch es ahora la plataforma más exitosa para videos en vivo en el sector de los juegos. En el campo de los deportes electrónicos, se destacan juegos como Fortnite, Call of Duty, Counter Strike, League of Legends y World of Warcraft. También hay una sección de música donde los músicos pueden ofrecer sesiones en vivo.`},
+  {cod: 'razer', nombre: 'Razer Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Razer.webp', descrip: `Acerca de Razer\nFundada en 2005, Razer fabrica hardware galardonado para juegos, incluidos periféricos y portátiles. Su plataforma de software cuenta con más de 175 millones de usuarios e incluye software popular como Razer Chroma RGB, Razer Cortex y Razer Synapse.\n\nPero quizás la oferta más impresionante de la marca es el Razer Gold. Es un servicio de pago diseñado para jugadores de ayuda, Generación Z y millennials. De hecho, Razer Gold es uno de los servicios de pago de juegos más fiables y de confianza.\nCon las tarjetas de regalo Razer Gold, puedes comprar juegos y artículos de entretenimiento sin la molestia de usar efectivo o tarjetas de crédito.`},
+  {cod: 'target', nombre: 'Target Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Target.webp', descrip: `Acerca de Target\nTarget es una de las principales y octavas corporaciones minoristas más grandes de los Estados Unidos. Aproximadamente, Target tiene más de 1800 tiendas físicas en todo el país. Actualmente, es considerado el segundo minorista más grande de América del Norte. Ofrece una gama de productos, desde artículos esenciales para el hogar y la belleza hasta bebidas, alimentos, accesorios, ropa, decoración y mobiliario para el hogar, artículos deportivos y electrónica. Target es un destino de una sola parada donde puedes comprar lo que quieras. Ahora puedes comprar tus productos favoritos de Target utilizando tus tarjetas de regalo en Coinsbee. Es una plataforma que te permite comprar tus tarjetas de regalo utilizando tu criptomoneda.`},
+  {cod: 'ebay', nombre: 'eBay Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/eBay.webp', descrip: `¿Qué es eBay?\neBay es un mercado global en línea que ayuda a las personas a comprar y vender bienes nuevos y usados, automóviles, bienes raíces, servicios y más. Es un destino para los compradores que quieren encontrar las mejores ofertas en todo, desde ropa vintage hasta autos usados. En Ebay, los productos se pueden comprar por la oferta más alta en el proceso de subasta. Pero también es posible la compra de muchos artículos por compra directa. Ebay utiliza un sistema de calificación para compradores y vendedores. Por lo tanto, uno puede estimar si es un vendedor experimentado y bueno.\nAdemás, puede comprar tarjetas de regalo de eBay en línea para comprar todo tipo de productos en eBay. Las tarjetas de regalo también son una excelente manera de darle a alguien exactamente lo que quiere sin tener que adivinar qué podría ser.`}
 ];
 
-
-const montos = [10, 25, 50, 75, 100, 200, 500];
+const rangos = {
+  play: [10, 20, 25, 50, 100],
+  xbox: [10, 15, 25, 50, 100],
+  itunes: [10, 15, 25, 50, 100],
+  gplay: [10, 15, 25, 50, 100],
+  nintendo: [10, 20, 35, 50, 99],
+  freefire: [5, 10, 20, 50, 100],
+  roblox: [10, 15, 25, 50, 100],
+  steam: [5, 10, 20, 25, 50, 100],
+  amazon: [10, 15, 25, 50, 100],
+  fortnite: [10, 25, 40, 100],
+  netflix: [15, 25, 50, 100],
+  visa: [25, 50, 100, 200],
+  pubg: [10, 25, 50, 100],
+  fifa: [10, 25, 50, 100],
+  brawl: [5, 10, 20, 50],
+  apex: [10, 25, 50, 100],
+  crypto: [25, 50, 100, 200],
+  binance: [25, 50, 100, 200],
+  eneba: [10, 25, 50],
+  'League of Legends Gift Card': [10, 25, 50, 100],
+  twitch: [15, 25, 50, 100],
+  razer: [10, 25, 50, 100],
+  target: [10, 25, 50, 100],
+  ebay: [10, 25, 50, 100]
+};
 
 function getBACLink(item) {
   const links = {
-    play: {
-      10: "#", 
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    xbox: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    itunes: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    gplay: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    nintendo: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    freefire: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    roblox: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    steam: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    amazon: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    fortnite: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    netflix: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    visa: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    pubg: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    fifa: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    brawl: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    apex: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    crypto: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    binance: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    eneba: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    'League of Legends Gift Card': {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    twitch: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    razer: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    },
-    target: {
-      10: "#",
-      25: "#",
-      50: "#",
-      75: "#",
-      100: "#",
-      200: "#",
-      500: "#"
-    }
+    play:    {10:"#", 20:"#", 25:"#", 50:"#", 100:"#"},
+    xbox:    {10:"#", 15:"#", 25:"#", 50:"#", 100:"#"},
+    itunes:  {10:"#", 15:"#", 25:"#", 50:"#", 100:"#"},
+    gplay:   {10:"#", 15:"#", 25:"#", 50:"#", 100:"#"},
+    nintendo:{10:"#", 20:"#", 35:"#", 50:"#", 99:"#"},
+    freefire:{5:"#", 10:"#", 20:"#", 50:"#", 100:"#"},
+    roblox:  {10:"#", 15:"#", 25:"#", 50:"#", 100:"#"},
+    steam:   {5:"#", 10:"#", 20:"#", 25:"#", 50:"#", 100:"#"},
+    amazon:  {10:"#", 15:"#", 25:"#", 50:"#", 100:"#"},
+    fortnite:{10:"#", 25:"#", 40:"#", 100:"#"},
+    netflix: {15:"#", 25:"#", 50:"#", 100:"#"},
+    visa:    {25:"#", 50:"#", 100:"#", 200:"#"},
+    pubg:    {10:"#", 25:"#", 50:"#", 100:"#"},
+    fifa:    {10:"#", 25:"#", 50:"#", 100:"#"},
+    brawl:   {5:"#", 10:"#", 20:"#", 50:"#"},
+    apex:    {10:"#", 25:"#", 50:"#", 100:"#"},
+    crypto:  {25:"#", 50:"#", 100:"#", 200:"#"},
+    binance: {25:"#", 50:"#", 100:"#", 200:"#"},
+    eneba:   {10:"#", 25:"#", 50:"#"},
+    'League of Legends Gift Card': {10:"#", 25:"#", 50:"#", 100:"#"},
+    twitch:  {15:"#", 25:"#", 50:"#", 100:"#"},
+    razer:   {10:"#", 25:"#", 50:"#", 100:"#"},
+    target:  {10:"#", 25:"#", 50:"#", 100:"#"},
+    ebay:    {10:"#", 25:"#", 50:"#", 100:"#"},
   };
-  return links[item.cod] && links[item.cod][item.monto] ? links[item.cod][item.monto] : "https://checkout.baccredomatic.com/link-general";
+  if (links[item.cod] && links[item.cod][item.monto]) {
+    return links[item.cod][item.monto];
+  }
+  return "https://checkout.baccredomatic.com/link-general";
 }
 
 function renderInicio() {
@@ -639,13 +351,14 @@ function renderProductos() {
   let html = `<h2 style="margin-bottom:14px;">Todos los productos</h2>
     <div class="products">`;
   productos.forEach((prod, i) => {
+    const montosValidos = rangos[prod.cod] || [10, 25, 50, 100];
     html += `
       <div class="product">
         <img src="${prod.img}" alt="${prod.nombre}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/542/542638.png'"/>
         <h2 onclick="verDetalleProducto(${i})" style="cursor:pointer">${prod.nombre}</h2>
         <p>Códigos digitales.<br>Entrega inmediata.</p>
         <select class="select-monto" id="monto-${i}">
-          ${montos.map(m => `<option value="${m}">$${m} USD</option>`).join('')}
+          ${montosValidos.map(m => `<option value="${m}">$${m} USD</option>`).join('')}
         </select>
         <button class="add-cart-btn" onclick="agregarAlCarrito(${i}, true)">Agregar al carrito</button>
       </div>
@@ -657,6 +370,7 @@ function renderProductos() {
 }
 function verDetalleProducto(idx) {
   let prod = productos[idx];
+  const montosValidos = rangos[prod.cod] || [10, 25, 50, 100];
   let html = `
     <span class="back-link" onclick="renderProductos()">← Volver a productos</span>
     <div style="text-align:center;">
@@ -667,7 +381,7 @@ function verDetalleProducto(idx) {
     <div style="margin:18px 0;">
       <label>Monto: </label>
       <select class="select-monto" id="detalle-monto">
-        ${montos.map(m => `<option value="${m}">$${m} USD</option>`).join('')}
+        ${montosValidos.map(m => `<option value="${m}">$${m} USD</option>`).join('')}
       </select>
       <button class="add-cart-btn" onclick="agregarAlCarrito(${idx}, false)">Agregar al carrito</button>
     </div>
@@ -757,9 +471,10 @@ function getWhatsAppLink() {
   carrito.forEach(item => {
     msg += `- ${item.nombre} $${item.monto} x${item.cantidad}\n`;
   });
-  msg += "\n¿Puedes enviarme instrucciones de pago?";
+  msg += "\nQuiero pagar por *transferencia bancaria o efectivo*.\n¿Puedes enviarme instrucciones?";
   return `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
 }
+
 function pagarWhatsApp() {
   if (carrito.length == 0) { alert("El carrito está vacío."); return; }
   window.open(getWhatsAppLink(), '_blank');
@@ -776,7 +491,6 @@ window.onhashchange = function(){
   handleNav(page);
 };
 handleNav((location.hash || "#inicio").replace('#',''));
-
 document.querySelectorAll('.navbar-menu li a').forEach(link=>{
   link.onclick = function(e){ 
     e.preventDefault(); 
