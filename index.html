@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GifCard BP | Tienda de Códigos Digitales</title>
+  <title>𝗚𝗜𝗙𝗦𝗔𝗡𝗗-𝗕𝗣 | Tienda de Códigos Digitales</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -256,13 +256,12 @@
   </div>
   <div class="cart-panel-bg" id="cart-bg"></div>
   <div class="footer">
-    &copy; 2025 GifCard BP<br>
+    &copy; 2025 𝗚𝗜𝗙𝗦𝗔𝗡𝗗-𝗕𝗣<br>
     Entrega inmediata por correo o WhatsApp.<br>
     <small>Diseño moderno glass hecho con ❤️ en El Salvador.</small>
   </div>
 
 <script>
-// --------- Carrusel Moderno Glass ---------
 const destacados = [
   {
     img: "https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp",
@@ -332,7 +331,6 @@ function gotoProducto(idx) {
   }, 120);
 }
 
-// ------------- Catálogo Completo -------------
 const productos = [
   {cod: 'play', nombre: 'PlayStation Store', img: 'https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp', descrip: `¡Recarga tu cuenta PlayStation y compra juegos, suscripciones, DLC y más en segundos! La tarjeta PSN es la forma más fácil y segura de disfrutar todo el contenido de PlayStation Store. Ideal para regalar o comprar sin tarjeta de crédito.`},
   {cod: 'xbox', nombre: 'Xbox Gift Card', img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-81.webp', descrip: `Añade saldo a tu cuenta Xbox para comprar juegos, contenido, membresías y más. Sin tarjetas de crédito, sin complicaciones. Canjea fácilmente desde tu consola o en línea. ¡Perfecto para gamers!`},
@@ -370,7 +368,6 @@ const rangos = {
   target: [10, 25, 50, 100], ebay: [10, 25, 50, 100]
 };
 
-// INICIO, PRODUCTOS, CONTACTO
 function renderInicio() {
   document.getElementById('main-content').innerHTML = `
     <h2 style="text-align:center;margin-top:24px;">Bienvenido a GifCard BP</h2>
@@ -453,7 +450,6 @@ function handleNav(page) {
   else if(page === 'contacto') renderContacto();
   else renderInicio();
 }
-// --- CARRITO ---
 let carrito = [];
 function agregarAlCarrito(idx, desdeListado) {
   let monto = desdeListado 
