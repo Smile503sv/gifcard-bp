@@ -6,246 +6,227 @@
   <title>GifCard BP | Tienda de Códigos Digitales</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    body {
-      margin: 0; font-family: 'Roboto', Arial, sans-serif; background: #f6f7fa;
-      color: #23232a; min-height: 100vh; box-sizing: border-box;
+    :root {
+      --main: #e30613;
+      --main-dark: #b40410;
+      --glass-bg: rgba(255,255,255,0.68);
+      --glass-shadow: 0 8px 36px 2px rgba(227,6,19,0.11);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --transition: .17s cubic-bezier(.4,0,.2,1);
+      --nav-h: 62px;
+      --footer-h: 74px;
     }
-    a { color: #e30613; text-decoration: none; }
+    html, body {
+      margin: 0; padding: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: #f6f7fa;
+      color: #222;
+      min-height: 100vh;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body { min-height: 100vh; }
+    a { color: var(--main); text-decoration: none; }
+    /* NAV */
     .navbar {
-      background: #e30613;
-      box-shadow: 0 3px 18px rgba(0,0,0,0.09); position: sticky; top: 0; z-index: 100;
+      background: var(--main);
+      color: #fff;
+      height: var(--nav-h);
+      box-shadow: 0 2px 18px rgba(0,0,0,.06);
+      position: sticky; top: 0; left: 0; width: 100vw; z-index: 1100;
+      display: flex; align-items: center; justify-content: center;
     }
     .navbar-container {
-      max-width: 1120px; margin: 0 auto; display: flex; justify-content: flex-start; align-items: center;
-      padding: 9px 17px 8px 17px; gap:24px;
-    }
-    .navbar-logo-img {
-      width: 42px; height: 42px; border-radius: 14px; background: #fff; box-shadow: 0 2px 12px #fff9;
-      object-fit: contain; margin-right:10px; border:2.5px solid #fff;
-      display:inline-block;vertical-align:middle;
+      width: 100%; max-width: 1200px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px;
     }
     .navbar-logo {
-      font-weight: 900; font-size: 2rem; color: #fff; letter-spacing: 1.3px; display:flex;align-items:center; gap:8px;
+      display: flex; align-items: center; font-weight: 900;
+      font-size: 2rem; gap: 9px; letter-spacing: 2px;
     }
+    .navbar-logo img { width: 38px; height: 38px; background: #fff; border-radius: 10px; box-shadow: 0 3px 8px #ddd6; }
     .navbar-menu {
-      list-style: none; display: flex; gap: 38px; margin: 0 0 0 46px; padding: 0;
-      font-weight: 700; font-size: 1.07rem;
+      list-style: none; display: flex; gap: 28px; margin: 0; padding: 0;
     }
     .navbar-menu li a {
-      color: #fff; padding: 6px 0; border-bottom: 2.5px solid transparent;
-      transition: color .16s, border-bottom .16s;
-      font-weight:700;
-      font-size:1.07rem;
-      letter-spacing:.4px;
+      color: #fff; font-weight: 700; font-size: 1.07rem; padding: 4px 6px; border-radius: 6px; transition: background var(--transition);
     }
-    .navbar-menu li a.active, .navbar-menu li a:hover {
-      color: #ffe3e3; border-bottom: 2.5px solid #fff;
-    }
-    .banner {
-      background: linear-gradient(92deg,#e30613 88%,#fff 100%);
-      color: #fff; padding: 38px 0 0 0; text-align: center; border-radius: 0 0 24px 24px;
-      box-shadow:0 7px 22px #e3061330;
-      position:relative; min-height:88px;
-    }
-    .banner h1 {
-      margin: 0; font-size: 2.32rem; font-weight: 900; letter-spacing: 2px;
-      text-shadow: 0 2px 9px #e306134a;
-      color: #fff;
-      display:inline-block;
-    }
-    .banner p {margin: 13px 0 0 0; font-size: 1.17rem; font-weight: 500; color:#fff;}
+    .navbar-menu li a.active, .navbar-menu li a:hover { background: #fff2; color: #fff; }
+    /* CARRUSEL MODERNO */
     .carrusel-glass {
-      max-width: 750px;
-      margin: 40px auto 0 auto;
-      border-radius: 30px;
-      box-shadow: 0 12px 44px 0 rgba(227,6,19,0.11), 0 3px 22px #fff9;
-      background: rgba(255,255,255,0.17);
-      backdrop-filter: blur(17px);
+      margin: 28px auto 10px auto;
+      max-width: 720px;
+      border-radius: var(--radius-lg);
       overflow: hidden;
+      box-shadow: var(--glass-shadow);
       position: relative;
-      padding: 0 0 18px 0;
-      border: 1.7px solid #efefef;
-      animation: fadein .7s;
+      background: linear-gradient(120deg, #fff 80%, #fce5e5 100%);
     }
-    @keyframes fadein { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:translateY(0);} }
     .carrusel-fade {
-      transition: opacity .47s cubic-bezier(.7,.09,.38,1.04);
-      opacity: 0;
-      pointer-events:none;
-      position:absolute;top:0;left:0;width:100%;
+      opacity: 0; transition: opacity 0.7s; pointer-events:none;
+      position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+      z-index: 1;
+      display: flex; align-items: center; min-height: 180px;
     }
-    .carrusel-fade.active {
-      opacity: 1;
-      position:relative;
-      pointer-events:auto;
-    }
+    .carrusel-fade.active { opacity: 1; pointer-events: auto; position: relative; z-index: 2; }
     .carrusel-slide-flex {
-      display: flex; align-items: center; min-height: 180px; padding: 24px 45px 15px 35px;
-      background: linear-gradient(97deg,#fff 80%,#ffe0e0 130%);
+      display: flex; align-items: center; gap: 16px; padding: 32px 26px;
+      min-height: 170px; box-sizing: border-box;
     }
     .carrusel-img {
-      width: 130px; height: 130px; object-fit: contain; border-radius: 24px;
-      background: #fff; box-shadow: 0 7px 38px #ec999912;
-      margin-right: 42px;
-      border: 2px solid #f9e7eb;
+      width: 120px; height: 120px; border-radius: 17px; object-fit: cover; background: #fff;
+      box-shadow: 0 3px 28px 0 rgba(227,6,19,.10);
+      flex-shrink: 0;
     }
-    .carrusel-info {
-      flex: 1; text-align:left;
-    }
-    .carrusel-info h2 {
-      margin: 0 0 10px 0;
-      font-size: 1.45rem;
-      color: #e30613;
-      font-weight: 900;
-      letter-spacing: .5px;
-      text-shadow:0 1px 8px #e306130b;
-    }
-    .carrusel-info p {
-      color: #1e1e1e;
-      font-size: 1.14rem;
-      margin: 0 0 14px 0;
-      font-weight:500;
-    }
+    .carrusel-info { flex: 1; }
+    .carrusel-info h2 { color: var(--main); font-size: 1.36rem; font-weight: 900; margin-bottom: 8px; }
+    .carrusel-info p { color: #444; font-size: 1.07rem; margin-bottom: 20px; }
     .carrusel-btn {
-      background: linear-gradient(93deg,#e30613 70%,#ff8c8c 150%);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.12rem;
-      padding: 13px 27px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 2px 10px #e3061322;
-      margin-top: 8px;
-      transition: background .18s, transform .13s, box-shadow .22s;
-      letter-spacing:.6px;
-      outline:none;
+      background: var(--main); color: #fff; font-size: 1.05rem;
+      border: none; border-radius: 7px; padding: 11px 34px;
+      font-weight: 800; letter-spacing: .5px; box-shadow: 0 4px 18px #e3061322;
+      cursor: pointer; transition: background .18s, transform .15s;
     }
-    .carrusel-btn:hover {background:#b40410; transform:scale(1.07);box-shadow:0 7px 22px #e3061340;}
+    .carrusel-btn:hover { background: var(--main-dark); transform: scale(1.05); }
     .carrusel-dots {
-      text-align:center;
-      margin:14px 0 0 0;
-      user-select:none;
+      text-align: center; margin-top: -12px; z-index: 50; position: relative;
     }
     .carrusel-dot {
-      border:none; width:18px; height:18px; border-radius:50%;
-      background:#ececec; margin:0 10px; cursor:pointer; transition:background .24s,transform .19s;
-      outline:none; position:relative;top:0;
-      box-shadow:0 2px 10px #e3061322;
+      border: none; width: 17px; height: 17px; border-radius: 50%;
+      background: #eee; margin: 0 7px; cursor: pointer;
+      transition: background .3s, transform .3s;
+      box-shadow: 0 2px 8px #0001;
+      display: inline-block;
     }
-    .carrusel-dot.active {
-      background:#e30613;
-      transform:scale(1.22);
-      box-shadow:0 2px 10px #e3061355;
-    }
+    .carrusel-dot.active { background: var(--main); transform: scale(1.2); }
+    /* MAIN WRAPPER */
     .main {
-      max-width: 1200px; margin: 28px auto 0 auto; padding: 22px;
-      background: #fff; border-radius: 22px; box-shadow: 0 8px 36px rgba(0,0,0,0.08);
-      min-height: 410px; animation: fadein 0.41s;
+      max-width: 1220px; margin: 0 auto; padding: 0 16px 30px 16px;
+      min-height: 500px; background: transparent;
     }
+    /* PRODUCTOS GRID */
     .products {
-      display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 33px 20px; margin-top: 20px;
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 30px 17px; margin-top: 20px;
     }
     .product {
-      background: linear-gradient(120deg,#fff 75%,#fae1e1 100%);
-      border-radius: 16px; padding: 26px 13px 20px 13px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.09); text-align: center; border: 1.5px solid #ececec;
-      display: flex; flex-direction: column; align-items: center;
-      transition: box-shadow .18s, transform .15s;
-      position:relative;
-      overflow:hidden;
+      background: var(--glass-bg);
+      border-radius: var(--radius-md); padding: 22px 9px 17px 9px;
+      box-shadow: 0 2px 13px rgba(0,0,0,.10);
+      border: 1.2px solid #edeaea;
+      text-align: center; display: flex; flex-direction: column; align-items: center;
+      position: relative; overflow: hidden; transition: box-shadow .18s, transform .13s;
+      min-width: 0;
     }
-    .product:hover { box-shadow:0 6px 26px rgba(227,6,19,0.13);transform:translateY(-6px) scale(1.025);}
-    .product img {width:78px;height:78px;object-fit:contain;margin-bottom:12px;border-radius:15px;background:#fff;}
+    .product:hover { box-shadow:0 7px 23px rgba(227,6,19,0.13); transform: translateY(-5px) scale(1.018);}
+    .product img { width: 76px; height: 76px; object-fit: contain; margin-bottom: 13px; border-radius: 13px; background: #fff;}
     .product h2 {
-      font-size:1.09rem;margin:0 0 10px 0;color:#e30613;font-weight:900;cursor:pointer; transition: color 0.13s;
+      font-size: 1.01rem; margin:0 0 10px 0; color: var(--main); font-weight:900; cursor:pointer; transition: color .13s;
     }
-    .product h2:hover {color:#b60411;}
-    .product p {color:#444;font-size:0.97rem;margin-bottom:9px;min-height:36px;}
+    .product h2:hover { color: var(--main-dark);}
+    .product p { color: #444; font-size: .97rem; margin-bottom: 9px; min-height: 30px;}
     .select-monto {
-      margin-bottom:10px;padding:6px 6px;border-radius:7px;border:1px solid #e30613;font-weight:700;color:#d60010;
+      margin-bottom:10px; padding:6px 7px; border-radius:7px; border:1px solid var(--main); font-weight:700; color: var(--main-dark);
+      background: #fff; font-size: 1rem;
     }
     .add-cart-btn {
-      background:#e30613;color:#fff;padding:10px 22px;border-radius:8px;font-size:1rem;
-      font-weight:700;display:inline-block;margin-top:7px;transition:background 0.2s, transform .13s;
-      border:none;cursor:pointer; box-shadow:0 3px 14px rgba(227,6,19,0.08);
+      background: var(--main); color: #fff; padding: 10px 0; width: 90%;
+      border-radius: 8px; font-size: 1.09rem; font-weight:700; margin-top:7px;
+      transition: background .18s, transform .13s;
+      border: none; cursor:pointer; box-shadow: 0 3px 14px #e3061310;
+      letter-spacing: .2px;
     }
-    .add-cart-btn:hover {background:#b40410;transform:scale(1.06);}
-    .product-detail-img {width:124px;height:124px;object-fit:contain;border-radius:20px;margin-bottom:18px;}
-    .product-detail-title {font-size:1.45rem;font-weight:900;color:#e30613;margin:0 0 13px 0;}
-    .product-detail-desc {color:#232323;font-size:1.05rem;margin-bottom:17px;white-space:pre-line;}
-    .back-link {color:#e30613;text-decoration:underline;cursor:pointer;font-weight:700;margin-bottom:14px;display:inline-block;}
+    .add-cart-btn:hover {background: var(--main-dark); transform: scale(1.06);}
+    .back-link {
+      color: var(--main); text-decoration:underline; cursor:pointer; font-weight:700; margin-bottom:14px; display:inline-block;
+    }
+    /* PRODUCTO DETALLE */
+    .product-detail-img { width: 122px; height: 122px; object-fit:contain; border-radius:19px; margin-bottom:18px; }
+    .product-detail-title { font-size: 1.34rem; font-weight:900; color: var(--main); margin:0 0 13px 0;}
+    .product-detail-desc { color:#232323; font-size:1.07rem; margin-bottom:17px; white-space:pre-line;}
+    /* CARRITO */
     .cart-btn-float {
-      position:fixed;bottom:34px;right:32px;background:#e30613;color:#fff;border-radius:50%;width:62px;height:62px;
-      box-shadow:0 7px 34px rgba(227,6,19,0.13);font-size:2.18rem;border:none;display:flex;align-items:center;justify-content:center;
-      cursor:pointer;z-index:1001;outline:none;transition:background 0.13s;
+      position:fixed;bottom:30px;right:23px; background:var(--main); color:#fff;
+      border-radius:50%;width:56px;height:56px; box-shadow:0 7px 24px #e3061315;
+      font-size:2rem; border:none; display:flex; align-items:center; justify-content:center;
+      cursor:pointer; z-index:1101; outline:none; transition:background .13s;
     }
-    .cart-btn-float:hover {background:#b40410;}
+    .cart-btn-float:hover {background:var(--main-dark);}
     .cart-panel {
-      position:fixed;right:0;top:0;width:340px;height:100vh;background:#fff;box-shadow:-3px 0 16px rgba(0,0,0,0.11);
-      z-index:2000;transform:translateX(110%);transition:transform 0.3s;display:flex;flex-direction:column;
+      position:fixed; right:0; top:0; height:100vh; background:#fff;
+      box-shadow:-3px 0 16px rgba(0,0,0,0.11);
+      z-index:2100; transform:translateX(120%); transition:transform .3s; display:flex; flex-direction:column; width:340px;
+      max-width: 100vw;
     }
-    .cart-panel.open {transform:translateX(0);}
+    .cart-panel.open { transform:translateX(0); }
     .cart-header {
-      font-size:1.24rem;font-weight:900;color:#e30613;padding:22px 22px 12px 22px;border-bottom:1.5px solid #eee;
-      display:flex;align-items:center;justify-content:space-between;
+      font-size:1.18rem; font-weight:900; color:var(--main); padding:20px 19px 13px 19px; border-bottom:1.5px solid #eee;
+      display:flex; align-items:center; justify-content:space-between;
     }
     .cart-close-btn {
-      font-size:1.5rem;background:none;border:none;color:#999;cursor:pointer;
+      font-size:1.5rem; background:none; border:none; color:#aaa; cursor:pointer;
+      padding: 3px 6px;
     }
-    .cart-items {flex:1;overflow-y:auto;padding:18px 18px 0 18px;}
+    .cart-items { flex:1; overflow-y:auto; padding: 14px 16px 0 16px;}
     .cart-item {
-      display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0f0f0;
-      padding-bottom:8px;margin-bottom:12px;
+      display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #f0f0f0;
+      padding-bottom:8px; margin-bottom:12px;
     }
-    .cart-item span {font-size:0.99rem;}
+    .cart-item span { font-size:0.99rem; }
     .cart-remove-btn {
-      background:none;border:none;color:#e30613;font-size:1.1rem;cursor:pointer;font-weight:900;
+      background:none; border:none; color:var(--main); font-size:1.11rem; cursor:pointer; font-weight:900;
     }
     .cart-total {
-      font-size:1.07rem;font-weight:700;color:#222;margin:8px 0 8px 0;text-align:right;padding-right:18px;
+      font-size:1.07rem; font-weight:700; color:#222; margin:10px 0 8px 0; text-align:right; padding-right:17px;
     }
     .cart-actions {
-      display:flex;flex-direction:column;gap:8px;padding:0 18px 22px 18px;
+      display:flex; flex-direction:column; gap:8px; padding:0 17px 19px 17px;
     }
     .pay-ws-btn {
-      padding:11px 0;font-size:1rem;border-radius:7px;font-weight:700;border:none;cursor:pointer;margin-bottom:4px;
-      background:#25d366;color:#fff; transition:background .18s;
+      background:#25d366; color:#fff; padding:12px 0; font-size:1.08rem; border-radius:7px; font-weight:800; border:none; cursor:pointer; margin-bottom:2px;
+      transition:background .16s;
+      box-shadow: 0 2px 8px #25d36624;
+      letter-spacing: .1px;
     }
-    .pay-ws-btn:hover {background:#109140;}
+    .pay-ws-btn:hover { background: #159e4e;}
     .cart-panel-bg {
-      display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.19);z-index:1001;
+      display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.19); z-index:1200;
     }
     .cart-panel.open ~ .cart-panel-bg {display:block;}
+    /* FOOTER */
     .footer {
-      text-align:center;color:#444;font-size:1.09rem;padding:38px 0 15px 0;
-      margin-top: 45px;
+      text-align:center; color:#444; font-size:1.01rem; padding:35px 0 10px 0;
     }
-    .footer small {color:#888;}
     @media (max-width:950px){
-      .carrusel-img{width:85px; height:85px; margin-right:10px;}
-      .carrusel-slide-flex{padding:14px 5vw 7px 5vw;}
-      .main{padding:8px;}
-      .products{gap:20px 7px;}
+      .carrusel-glass {max-width:98vw;}
+      .carrusel-slide-flex {padding:22px 7px;}
+      .carrusel-img {width:78px; height:78px;}
+      .cart-panel {width:96vw;}
     }
     @media (max-width:600px){
-      .navbar-container{padding:6px 4vw;}
-      .navbar-logo{font-size:1.25rem;}
-      .banner h1{font-size:1.13rem;}
-      .banner{padding:16px 0 0 0;}
-      .main{margin:7px 0;}
-      .carrusel-slide-flex{flex-direction:column;align-items:flex-start;padding:11px 5vw;}
-      .carrusel-info{text-align:left;}
-      .carrusel-img{margin:0 0 11px 0;}
-      .products{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
+      .navbar-logo {font-size: 1.26rem;}
+      .navbar-menu {gap: 14px;}
+      .carrusel-glass {max-width:99vw;}
+      .carrusel-slide-flex {flex-direction: column; align-items: flex-start; gap: 9px; padding:19px 7px 19px 7px; min-height: 125px;}
+      .carrusel-img {margin-bottom: 7px;}
+      .carrusel-info h2 {font-size: 1.09rem;}
+      .carrusel-info p {font-size: .95rem;}
+      .main {padding: 0 3vw;}
+      .products {grid-template-columns: 1fr; gap: 22px;}
+      .cart-panel {width: 100vw; max-width: 100vw;}
+      .cart-header {font-size: 1rem;}
     }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="navbar-container">
-      <img src="https://cdn-icons-png.flaticon.com/512/1042/1042341.png" alt="Logo" class="navbar-logo-img"/>
-      <span class="navbar-logo">GifCard BP</span>
+      <span class="navbar-logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/871/871383.png" alt="logo"/>
+        GifCard BP
+      </span>
       <ul class="navbar-menu" id="navbar-menu">
         <li><a href="#inicio" data-page="inicio">Inicio</a></li>
         <li><a href="#productos" data-page="productos">Productos</a></li>
@@ -253,21 +234,19 @@
       </ul>
     </div>
   </nav>
-  <div class="banner" id="banner">
-    <h1>¡Bienvenido a GifCard BP!</h1>
-    <p>Compra códigos de Xbox, PlayStation, Free Fire, Steam y más. Entrega inmediata por WhatsApp o email.</p>
-    <!-- Carrusel Moderno Glass -->
-    <div class="carrusel-glass" id="carousel-glass">
-      <div id="carousel-slide"></div>
-      <div class="carrusel-dots" id="carousel-dots"></div>
-    </div>
+  
+  <div class="carrusel-glass" style="margin-top:18px;">
+    <div id="carousel-slide"></div>
+    <div class="carrusel-dots" id="carousel-dots"></div>
   </div>
+
   <div class="main" id="main-content"></div>
+
   <button class="cart-btn-float" id="cart-btn" title="Ver carrito">&#128722;</button>
   <div class="cart-panel" id="cart-panel">
     <div class="cart-header">
       Carrito de compras
-      <button class="cart-close-btn" id="close-cart" title="Cerrar">&#10005;</button>
+      <button class="cart-close-btn" id="close-cart" title="Cerrar">&times;</button>
     </div>
     <div class="cart-items" id="cart-items"></div>
     <div class="cart-total" id="cart-total"></div>
@@ -277,17 +256,18 @@
   </div>
   <div class="cart-panel-bg" id="cart-bg"></div>
   <div class="footer">
-    &copy; 2025 gifcard-bp<br>
+    &copy; 2025 GifCard BP<br>
     Entrega inmediata por correo o WhatsApp.<br>
-    <small>Diseño moderno hecho con ❤️ en El Salvador.</small>
+    <small>Diseño moderno glass hecho con ❤️ en El Salvador.</small>
   </div>
+
 <script>
 // --------- Carrusel Moderno Glass ---------
 const destacados = [
   {
     img: "https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp",
     nombre: "PlayStation Store",
-    texto: "Recarga tu cuenta PlayStation y compra juegos, suscripciones, DLC y más. Tarjetas digitales con entrega inmediata."
+    texto: "Recarga tu cuenta PlayStation y compra juegos, suscripciones, DLC y más en segundos. Entrega inmediata."
   },
   {
     img: "https://cdn.topuplive.com/uploads/images/goods/v4/f/F-81.webp",
@@ -312,41 +292,47 @@ function renderCarrusel(){
   dots.innerHTML = "";
   destacados.forEach((item, idx)=>{
     slide.innerHTML += `
-      <div class="carrusel-fade${idx===0?' active':''}" id="carrusel-fade-${idx}">
+      <div class="carrusel-fade${idx==0?' active':''}" id="slide${idx}">
         <div class="carrusel-slide-flex">
-          <img src="${item.img}" alt="${item.nombre}" class="carrusel-img">
+          <img src="${item.img}" class="carrusel-img" alt="${item.nombre}">
           <div class="carrusel-info">
             <h2>${item.nombre}</h2>
             <p>${item.texto}</p>
-            <a href="#productos"><button class="carrusel-btn">Ver catálogo</button></a>
+            <button class="carrusel-btn" onclick="gotoProducto(${idx})">Comprar ahora</button>
           </div>
         </div>
       </div>
     `;
-    dots.innerHTML += `<button class="carrusel-dot${idx===0?' active':''}" onclick="carruselIr(${idx})" id="dot${idx}"></button>`;
+    dots.innerHTML += `<button class="carrusel-dot${idx==0?' active':''}" onclick="carruselIr(${idx})"></button>`;
   });
 }
 let carruselIdx = 0;
 function carruselMostrar(idx){
-  for(let i=0;i<destacados.length;i++){
-    document.getElementById(`carrusel-fade-${i}`).classList.toggle("active",i==idx);
-    document.getElementById(`dot${i}`).classList.toggle("active",i==idx);
-  }
+  document.querySelectorAll(".carrusel-fade").forEach((el,i)=>{
+    el.classList.toggle("active",i==idx)
+  });
+  document.querySelectorAll(".carrusel-dot").forEach((b,i)=>b.classList.toggle("active",i==idx));
   carruselIdx = idx;
 }
 function carruselIr(idx){
   carruselMostrar(idx);
   clearInterval(window.carruselAuto);
-  window.carruselAuto = setInterval(()=>carruselIr((carruselIdx+1)%destacados.length), 4200);
+  window.carruselAuto = setInterval(()=>carruselIr((carruselIdx+1)%destacados.length), 3800);
 }
 renderCarrusel();
-window.carruselAuto = setInterval(()=>carruselIr((carruselIdx+1)%destacados.length), 4200);
-// --- Al cargar (por si falla renderizado)
-setTimeout(()=>carruselMostrar(0), 200);
-// --------- Fin Carrusel Moderno ---------
+carruselMostrar(0);
+window.carruselAuto = setInterval(()=>carruselIr((carruselIdx+1)%destacados.length), 3800);
 
+function gotoProducto(idx) {
+  handleNav('productos');
+  setTimeout(()=>{
+    document.querySelectorAll('.product h2')[idx]?.scrollIntoView({behavior:'smooth', block:'center'});
+    document.querySelectorAll('.product h2')[idx]?.classList.add('active');
+    setTimeout(()=>{ document.querySelectorAll('.product h2')[idx]?.classList.remove('active'); }, 1700);
+  }, 120);
+}
 
-// --------- Catálogo igual al tuyo, carrito, WhatsApp, montos ---------
+// ------------- Catálogo Completo -------------
 const productos = [
   {cod: 'play', nombre: 'PlayStation Store', img: 'https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp', descrip: `¡Recarga tu cuenta PlayStation y compra juegos, suscripciones, DLC y más en segundos! La tarjeta PSN es la forma más fácil y segura de disfrutar todo el contenido de PlayStation Store. Ideal para regalar o comprar sin tarjeta de crédito.`},
   {cod: 'xbox', nombre: 'Xbox Gift Card', img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-81.webp', descrip: `Añade saldo a tu cuenta Xbox para comprar juegos, contenido, membresías y más. Sin tarjetas de crédito, sin complicaciones. Canjea fácilmente desde tu consola o en línea. ¡Perfecto para gamers!`},
@@ -367,50 +353,35 @@ const productos = [
   {cod: 'crypto', nombre: 'Crypto Voucher (US)', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Crypto-Voucher.webp', descrip: `Compra criptomonedas fácilmente con este cupón. Canjea en línea y recibe tu cripto en minutos.`},
   {cod: 'binance', nombre: 'Binance Gift Card (Global)', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Binance-Gift-Card.webp', descrip: `Recibe saldo directamente en tu cuenta Binance o regala criptomonedas a quien desees. Fácil, seguro e internacional.`},
   {cod: 'eneba', nombre: 'Eneba Gift Card (US)', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Eneba.webp', descrip: `Compra juegos y productos digitales en Eneba. Código digital, sin necesidad de tarjeta de crédito.`},
-  {cod: 'League of Legends Gift Card', nombre: 'League of Legends Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/League-of-Legends.webp', descrip: `League of Legends (LoL) es un juego MOBA (arena de batalla multijugador en línea) muy popular desarrollado y lanzado por Riot Games. RP (Riot Point) es la moneda del juego que se puede usar para comprar artículos del juego, campeones y más. Puedes comprar RP con dinero real o ganarlos completando ciertas misiones. ¡También puedes usar las tarjetas de regalo de League of Legends para comprar Riot Points! Los RP vienen en paquetes, y cada paquete contiene una cierta cantidad de RP.`},
-  {cod: 'twitch', nombre: 'Twitch Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Twitch.webp', descrip: `Acerca de Twitch\nTwitch es una plataforma para la transmisión de video en vivo. Ya fue fundada en Estados Unidos en 2011 y es una filial de Amazon. Twitch se hizo popular debido a los numerosos jugadores que grababan sus juegos para sus comunidades. Gracias a Twitch, estos jugadores pudieron ofrecer batallas en vivo y recibir donaciones (las llamadas "cheers") de sus fanáticos. Twitch es ahora la plataforma más exitosa para videos en vivo en el sector de los juegos. En el campo de los deportes electrónicos, se destacan juegos como Fortnite, Call of Duty, Counter Strike, League of Legends y World of Warcraft. También hay una sección de música donde los músicos pueden ofrecer sesiones en vivo.`},
-  {cod: 'razer', nombre: 'Razer Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Razer.webp', descrip: `Acerca de Razer\nFundada en 2005, Razer fabrica hardware galardonado para juegos, incluidos periféricos y portátiles. Su plataforma de software cuenta con más de 175 millones de usuarios e incluye software popular como Razer Chroma RGB, Razer Cortex y Razer Synapse.\n\nPero quizás la oferta más impresionante de la marca es el Razer Gold. Es un servicio de pago diseñado para jugadores de ayuda, Generación Z y millennials. De hecho, Razer Gold es uno de los servicios de pago de juegos más fiables y de confianza.\nCon las tarjetas de regalo Razer Gold, puedes comprar juegos y artículos de entretenimiento sin la molestia de usar efectivo o tarjetas de crédito.`},
-  {cod: 'target', nombre: 'Target Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Target.webp', descrip: `Acerca de Target\nTarget es una de las principales y octavas corporaciones minoristas más grandes de los Estados Unidos. Aproximadamente, Target tiene más de 1800 tiendas físicas en todo el país. Actualmente, es considerado el segundo minorista más grande de América del Norte. Ofrece una gama de productos, desde artículos esenciales para el hogar y la belleza hasta bebidas, alimentos, accesorios, ropa, decoración y mobiliario para el hogar, artículos deportivos y electrónica. Target es un destino de una sola parada donde puedes comprar lo que quieras. Ahora puedes comprar tus productos favoritos de Target utilizando tus tarjetas de regalo en Coinsbee. Es una plataforma que te permite comprar tus tarjetas de regalo utilizando tu criptomoneda.`},
-  {cod: 'ebay', nombre: 'eBay Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/eBay.webp', descrip: `¿Qué es eBay?\neBay es un mercado global en línea que ayuda a las personas a comprar y vender bienes nuevos y usados, automóviles, bienes raíces, servicios y más. Es un destino para los compradores que quieren encontrar las mejores ofertas en todo, desde ropa vintage hasta autos usados. En Ebay, los productos se pueden comprar por la oferta más alta en el proceso de subasta. Pero también es posible la compra de muchos artículos por compra directa. Ebay utiliza un sistema de calificación para compradores y vendedores. Por lo tanto, uno puede estimar si es un vendedor experimentado y bueno.\nAdemás, puede comprar tarjetas de regalo de eBay en línea para comprar todo tipo de productos en eBay. Las tarjetas de regalo también son una excelente manera de darle a alguien exactamente lo que quiere sin tener que adivinar qué podría ser.`}
+  {cod: 'League of Legends Gift Card', nombre: 'League of Legends Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/League-of-Legends.webp', descrip: `League of Legends (LoL) es un juego MOBA muy popular. ¡Usa estas tarjetas para conseguir RP y contenido del juego!`},
+  {cod: 'twitch', nombre: 'Twitch Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Twitch.webp', descrip: `Twitch es la plataforma líder de streaming. Con estas tarjetas puedes apoyar a tus creadores favoritos.`},
+  {cod: 'razer', nombre: 'Razer Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Razer.webp', descrip: `Compra hardware y crédito Razer Gold para juegos y servicios digitales en todo el mundo.`},
+  {cod: 'target', nombre: 'Target Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Target.webp', descrip: `Compra tus productos favoritos en Target con una tarjeta digital. Ideal para cualquier ocasión.`},
+  {cod: 'ebay', nombre: 'eBay Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/eBay.webp', descrip: `Compra todo lo que imaginas en eBay, fácil y seguro, con tarjeta de regalo.`}
 ];
 const rangos = {
-  play: [10, 20, 25, 50, 100],
-  xbox: [10, 15, 25, 50, 100],
-  itunes: [10, 15, 25, 50, 100],
-  gplay: [10, 15, 25, 50, 100],
-  nintendo: [10, 20, 35, 50, 99],
-  freefire: [5, 10, 20, 50, 100],
-  roblox: [10, 15, 25, 50, 100],
-  steam: [5, 10, 20, 25, 50, 100],
-  amazon: [10, 15, 25, 50, 100],
-  fortnite: [10, 25, 40, 100],
-  netflix: [15, 25, 50, 100],
-  visa: [25, 50, 100, 200],
-  pubg: [10, 25, 50, 100],
-  fifa: [10, 25, 50, 100],
-  brawl: [5, 10, 20, 50],
-  apex: [10, 25, 50, 100],
-  crypto: [25, 50, 100, 200],
-  binance: [25, 50, 100, 200],
-  eneba: [10, 25, 50],
-  'League of Legends Gift Card': [10, 25, 50, 100],
-  twitch: [15, 25, 50, 100],
-  razer: [10, 25, 50, 100],
-  target: [10, 25, 50, 100],
-  ebay: [10, 25, 50, 100]
+  play: [10, 20, 25, 50, 100], xbox: [10, 15, 25, 50, 100], itunes: [10, 15, 25, 50, 100],
+  gplay: [10, 15, 25, 50, 100], nintendo: [10, 20, 35, 50, 99], freefire: [5, 10, 20, 50, 100],
+  roblox: [10, 15, 25, 50, 100], steam: [5, 10, 20, 25, 50, 100], amazon: [10, 15, 25, 50, 100],
+  fortnite: [10, 25, 40, 100], netflix: [15, 25, 50, 100], visa: [25, 50, 100, 200],
+  pubg: [10, 25, 50, 100], fifa: [10, 25, 50, 100], brawl: [5, 10, 20, 50], apex: [10, 25, 50, 100],
+  crypto: [25, 50, 100, 200], binance: [25, 50, 100, 200], eneba: [10, 25, 50],
+  'League of Legends Gift Card': [10, 25, 50, 100], twitch: [15, 25, 50, 100], razer: [10, 25, 50, 100],
+  target: [10, 25, 50, 100], ebay: [10, 25, 50, 100]
 };
 
+// INICIO, PRODUCTOS, CONTACTO
 function renderInicio() {
   document.getElementById('main-content').innerHTML = `
     <h2 style="text-align:center;margin-top:24px;">Bienvenido a GifCard BP</h2>
-    <p style="text-align:center;">¡Somos tu tienda de confianza para comprar códigos digitales de videojuegos, entretenimiento, recargas y más! <br><br>
+    <p style="text-align:center;">¡Somos tu tienda de confianza para comprar códigos digitales de videojuegos, entretenimiento, recargas y más!<br><br>
     <b>Compra fácil, paga seguro y recibe al instante en tu correo o WhatsApp.</b></p>
     <ul style="max-width:380px;margin:22px auto 0 auto;font-size:1.13rem;">
       <li>+20 productos digitales</li>
       <li>Pago por transferencia o efectivo</li>
       <li>Soporte rápido y entrega inmediata</li>
     </ul>
-    <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Bienvenido" style="width:120px;margin:32px auto 0;display:block;">
+    <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Bienvenido" style="width:110px;margin:28px auto 0;display:block;">
   `;
   window.scrollTo(0,0);
 }
@@ -482,6 +453,7 @@ function handleNav(page) {
   else if(page === 'contacto') renderContacto();
   else renderInicio();
 }
+// --- CARRITO ---
 let carrito = [];
 function agregarAlCarrito(idx, desdeListado) {
   let monto = desdeListado 
@@ -498,7 +470,6 @@ function agregarAlCarrito(idx, desdeListado) {
   mostrarCarrito();
 }
 function mostrarCarrito() {
-  const panel = document.getElementById('cart-panel');
   const itemsDiv = document.getElementById('cart-items');
   const totalDiv = document.getElementById('cart-total');
   itemsDiv.innerHTML = '';
@@ -534,7 +505,7 @@ document.getElementById('close-cart').onclick = cerrarCarrito;
 document.getElementById('cart-bg').onclick = cerrarCarrito;
 function getWhatsAppLink() {
   const numero = "https://wa.me/message/6PUURM6RIVLZF1";
-  let msg = "Hola, quiero comprar:\n";
+  let msg = "¡Hola! Quiero comprar:\n";
   carrito.forEach(item => {
     msg += `- ${item.nombre} $${item.monto} x${item.cantidad}\n`;
   });
