@@ -10,6 +10,7 @@
       --primary: #e30613;
       --secondary: #222b3a;
       --glass: rgba(255,255,255,0.12);
+      --input-bg: #191f2e;
     }
     html, body { height: 100%; margin:0; padding:0; }
     body {
@@ -20,7 +21,6 @@
       margin: 0;
     }
     a { color: var(--primary); text-decoration: none; }
-    /* NAVBAR */
     .navbar {
       width:100%; background: #192030;
       border-bottom: 2.5px solid var(--primary);
@@ -61,11 +61,8 @@
       background: var(--primary); color: #fff;
     }
     .navbar-menu a:hover { color:var(--primary); background:rgba(255,255,255,0.10);}
-    /* Hamburger */
     .navbar-hamburger {display:none;flex-direction:column;gap:5px;cursor:pointer;}
     .navbar-hamburger span{display:block;width:28px;height:4px;background:#fff;border-radius:4px;}
-
-    /* CARRUSEL */
     .home-top-bg {
       min-height:320px;
       background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
@@ -140,7 +137,6 @@
       outline:none; box-shadow:0 1px 4px #0004;
     }
     .carousel-dots button.active { background:var(--primary); transform:scale(1.18);}
-    /* MAIN HOME */
     .main {
       max-width: 1100px; margin: 25px auto 0 auto; padding: 24px;
       background: rgba(22,26,36,0.94); border-radius: 17px;
@@ -152,7 +148,6 @@
     .main h2 {font-size:2.0rem;text-align:center;margin:0 0 11px 0;}
     .main ul {max-width:420px;margin:16px auto 0 auto;font-size:1.15rem;}
     .main li {margin-bottom:7px;}
-    /* PRODUCTOS */
     .products {
       display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 36px 20px; margin-top: 18px;
     }
@@ -174,7 +169,7 @@
     .product h2:hover {color:#b60411;}
     .product p {color:#c9c9d9;font-size:0.98rem;margin-bottom:9px;min-height:36px;}
     .select-monto {
-      margin-bottom:10px;padding:7px 7px;border-radius:8px;border:1.5px solid var(--primary);font-weight:700;color:#e30613;background: #191f2e;
+      margin-bottom:10px;padding:7px 7px;border-radius:8px;border:1.5px solid var(--primary);font-weight:700;color:#e30613;background: var(--input-bg);
     }
     .add-cart-btn {
       background:var(--primary);color:#fff;padding:11px 0;border-radius:10px;font-size:1.07rem;
@@ -184,12 +179,10 @@
       letter-spacing:.4px;
     }
     .add-cart-btn:hover {background:#b40410;}
-    /* PRODUCTO DETALLE */
     .product-detail-img {width:108px;height:108px;object-fit:contain;border-radius:14px;margin-bottom:18px;background:#fff;}
     .product-detail-title {font-size:1.32rem;font-weight:900;color:var(--primary);margin:0 0 13px 0;}
     .product-detail-desc {color:#e1e4f1;font-size:1.03rem;margin-bottom:15px;white-space:pre-line;}
     .back-link {color:var(--primary);text-decoration:underline;cursor:pointer;font-weight:700;margin-bottom:12px;display:inline-block;}
-    /* CARRITO */
     .cart-btn-float {
       position:fixed;bottom:30px;right:24px;background:var(--primary);color:#fff;border-radius:50%;width:62px;height:62px;
       box-shadow:0 7px 34px #e3061341;font-size:2.08rem;border:none;display:flex;align-items:center;justify-content:center;
@@ -227,17 +220,71 @@
       padding:12px 0;font-size:1rem;border-radius:9px;font-weight:900;border:none;cursor:pointer;margin-bottom:5px;
       background:#22c95c;color:#fff; box-shadow:0 2px 8px #22c95c3b;
       letter-spacing:0.4px; font-size:1.15rem;
+      transition: background 0.22s, transform 0.13s;
     }
     .pay-ws-btn:hover {background:#109140;}
     .cart-panel-bg {
       display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.23);z-index:4000;
     }
     .cart-panel.open ~ .cart-panel-bg {display:block;}
-    /* FOOTER */
+    .form-datos {
+      padding: 18px 16px;
+      background: rgba(34,43,58,0.97);
+      border-radius: 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 10px #0002;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      animation: fadein .35s;
+    }
+    .form-datos label {
+      font-weight: 700;
+      margin-bottom: 3px;
+      color: var(--primary);
+    }
+    .form-datos input {
+      padding: 9px 11px;
+      border-radius: 8px;
+      border: 1.3px solid #333b5c;
+      background: var(--input-bg);
+      color: #fff;
+      font-size: 1.04rem;
+      width: 100%;
+      outline: none;
+      transition: border-color .14s;
+    }
+    .form-datos input:focus {
+      border-color: var(--primary);
+      background: #151a27;
+    }
+    .form-datos .form-error {
+      color: #ff4444;
+      font-size: 0.98rem;
+      margin-top: -7px; margin-bottom: 7px;
+      display: none;
+    }
+    .form-datos .form-error.active {
+      display: block;
+    }
+    .form-datos .pay-ws-btn {
+      margin-top: 8px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 9px;
+      font-size: 1.09rem;
+      font-weight: 900;
+      box-shadow: 0 2px 10px #e3061330;
+      letter-spacing: 0.4px;
+      border: none;
+      padding: 11px 0;
+    }
+    .form-datos .pay-ws-btn:hover {
+      background: #b40410;
+    }
     .footer {
       text-align:center;color:#bbb;font-size:1.02rem;padding:32px 0 13px 0;
     }
-    /* Responsive Navbar & Home */
     @media (max-width:800px) {
       .main, .navbar-container {padding:8px;}
       .navbar-container {height:54px;}
@@ -255,11 +302,13 @@
       .carousel-img{width:70px;height:70px;}
       .product{padding:20px 5px 15px 5px;}
       .product-detail-img{width:74px;height:74px;}
+      .cart-panel {width:96vw;}
     }
     @media (max-width:480px) {
       .main{padding:5px;}
       .navbar-logo img {width:30px;height:30px;}
       .cart-btn-float {right:10px;bottom:10px;}
+      .cart-panel {width:100vw;}
     }
   </style>
 </head>
@@ -295,8 +344,9 @@
     </div>
     <div class="cart-items" id="cart-items"></div>
     <div class="cart-total" id="cart-total"></div>
-    <div class="cart-actions">
-      <button class="pay-ws-btn" onclick="pagarWhatsApp()">Solicitar compra por WhatsApp</button>
+    <div id="cart-form-datos"></div>
+    <div class="cart-actions" id="cart-actions">
+      <button class="pay-ws-btn" id="pagar-clic-btn">Solicitar compra por WhatsApp</button>
     </div>
   </div>
   <div class="cart-panel-bg" id="cart-bg"></div>
@@ -306,16 +356,12 @@
     <small>Diseño moderno hecho con ❤️ en El Salvador.</small>
   </div>
 <script>
-/* ---------- GAMER FONDO SLIDES (edita a gusto) ---------- */
 const fondosGamer = [
-  'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80', // gamer pc
-  'https://images.unsplash.com/photo-1513875528452-39400945934d?auto=format&fit=crop&w=1200&q=80', // gamepads
-  'https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=1200&q=80', // neon gamer
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80', // gamer chair
+  'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1513875528452-39400945934d?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80',
 ];
-let fondoIdx = 0;
-
-/* ---------- SLIDES PRODUCTOS DESTACADOS ---------- */
 const destacados = [
   {
     img: "https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp",
@@ -342,7 +388,6 @@ const destacados = [
     idx: 3,
   },
 ];
-
 function setFondoGamer(idx) {
   document.getElementById("home-top-bg").style.backgroundImage = "url('" + fondosGamer[idx % fondosGamer.length] + "')";
 }
@@ -381,16 +426,12 @@ function carruselIr(idx){
 renderCarrusel();
 carruselMostrar(0);
 window.carruselAuto = setInterval(()=>carruselIr((carruselIdx+1)%destacados.length), 3500);
-
-/* ---------- NAVBAR Responsive ---------- */
 const navMenu = document.getElementById("navbar-menu");
 const navHamburger = document.getElementById("navbar-hamburger");
 navHamburger.onclick = () => {
   navMenu.classList.toggle("open");
 }
 window.addEventListener("resize",()=>{ if(window.innerWidth>680){navMenu.classList.remove("open");} });
-
-/* ---------- PRODUCTOS Y CATÁLOGO ---------- */
 const productos = [
   {cod: 'play', nombre: 'PlayStation Store', img: 'https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp', descrip: `¡Recarga tu cuenta PlayStation y compra juegos, suscripciones, DLC y más en segundos! La tarjeta PSN es la forma más fácil y segura de disfrutar todo el contenido de PlayStation Store. Ideal para regalar o comprar sin tarjeta de crédito.`},
   {cod: 'xbox', nombre: 'Xbox Gift Card', img: 'https://cdn.topuplive.com/uploads/images/goods/v4/f/F-81.webp', descrip: `Añade saldo a tu cuenta Xbox para comprar juegos, contenido, membresías y más. Sin tarjetas de crédito, sin complicaciones. Canjea fácilmente desde tu consola o en línea. ¡Perfecto para gamers!`},
@@ -417,7 +458,6 @@ const productos = [
   {cod: 'target', nombre: 'Target Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/Target.webp', descrip: `Acerca de Target\nTarget es una de las principales y octavas corporaciones minoristas más grandes de los Estados Unidos. Aproximadamente, Target tiene más de 1800 tiendas físicas en todo el país. Actualmente, es considerado el segundo minorista más grande de América del Norte. Ofrece una gama de productos, desde artículos esenciales para el hogar y la belleza hasta bebidas, alimentos, accesorios, ropa, decoración y mobiliario para el hogar, artículos deportivos y electrónica. Target es un destino de una sola parada donde puedes comprar lo que quieras. Ahora puedes comprar tus productos favoritos de Target utilizando tus tarjetas de regalo en Coinsbee. Es una plataforma que te permite comprar tus tarjetas de regalo utilizando tu criptomoneda.`},
   {cod: 'ebay', nombre: 'eBay Gift Card', img: 'https://cdn.coinsbee.com/version2/dist/assets/img/brands/eBay.webp', descrip: `¿Qué es eBay?\neBay es un mercado global en línea que ayuda a las personas a comprar y vender bienes nuevos y usados, automóviles, bienes raíces, servicios y más. Es un destino para los compradores que quieren encontrar las mejores ofertas en todo, desde ropa vintage hasta autos usados. En Ebay, los productos se pueden comprar por la oferta más alta en el proceso de subasta. Pero también es posible la compra de muchos artículos por compra directa. Ebay utiliza un sistema de calificación para compradores y vendedores. Por lo tanto, uno puede estimar si es un vendedor experimentado y bueno.\nAdemás, puede comprar tarjetas de regalo de eBay en línea para comprar todo tipo de productos en eBay. Las tarjetas de regalo también son una excelente manera de darle a alguien exactamente lo que quiere sin tener que adivinar qué podría ser.`}
 ];
-
 const rangos = {
   play: [10, 20, 25, 50, 100],
   xbox: [10, 15, 25, 50, 100],
@@ -444,8 +484,6 @@ const rangos = {
   target: [10, 25, 50, 100],
   ebay: [10, 25, 50, 100]
 };
-
-/* ---------- HOME, PRODUCTOS, CONTACTO ---------- */
 function renderInicio() {
   document.getElementById('main-content').innerHTML = `
     <h2>Bienvenido a GIFSAND-BP</h2>
@@ -521,7 +559,6 @@ function renderContacto() {
   `;
   window.scrollTo(0,0);
 }
-/* NAVIGATION + ACTIVE */
 function handleNav(page) {
   document.querySelectorAll('.navbar-menu li a').forEach(el=>el.classList.remove('active'));
   let el = document.querySelector(`.navbar-menu li a[data-page="${page}"]`);
@@ -531,8 +568,8 @@ function handleNav(page) {
   else if(page === 'contacto') renderContacto();
   else renderInicio();
 }
-/* ---------- CARRITO Y WHATSAPP ---------- */
 let carrito = [];
+let datosEntrega = {nombre: '', correo: '', telefono: ''};
 function agregarAlCarrito(idx, desdeListado) {
   let monto = desdeListado 
     ? document.getElementById(`monto-${idx}`).value
@@ -546,9 +583,9 @@ function agregarAlCarrito(idx, desdeListado) {
     carrito.push({ key, nombre: prod.nombre, cod: prod.cod, monto: Number(monto), cantidad: 1 });
   }
   mostrarCarrito();
+  lanzarConfeti();
 }
 function mostrarCarrito() {
-  const panel = document.getElementById('cart-panel');
   const itemsDiv = document.getElementById('cart-items');
   const totalDiv = document.getElementById('cart-total');
   itemsDiv.innerHTML = '';
@@ -565,6 +602,7 @@ function mostrarCarrito() {
     itemsDiv.appendChild(itemDiv);
   });
   totalDiv.innerHTML = carrito.length ? `Total: <b>$${total}</b> USD` : '<span style="color:#888">Tu carrito está vacío.</span>';
+  renderFormDatos();
   abrirCarrito();
 }
 function quitarDelCarrito(idx) {
@@ -582,16 +620,74 @@ function cerrarCarrito() {
 document.getElementById('cart-btn').onclick = mostrarCarrito;
 document.getElementById('close-cart').onclick = cerrarCarrito;
 document.getElementById('cart-bg').onclick = cerrarCarrito;
+function renderFormDatos() {
+  const formDiv = document.getElementById('cart-form-datos');
+  if (carrito.length === 0) { formDiv.innerHTML = ''; return; }
+  formDiv.innerHTML = `
+    <form class="form-datos" id="form-datos-entrega" autocomplete="on">
+      <div>
+        <label for="nombre">Nombre completo para la entrega <span style="color:#ff6060">*</span></label>
+        <input type="text" id="nombre" name="nombre" maxlength="60" placeholder="Ej: Carlos Méndez" required value="${datosEntrega.nombre||''}" />
+        <div class="form-error" id="err-nombre"></div>
+      </div>
+      <div>
+        <label for="correo">Correo electrónico <span style="color:#ff6060">*</span></label>
+        <input type="email" id="correo" name="correo" maxlength="70" placeholder="Ej: usuario@email.com" required value="${datosEntrega.correo||''}" />
+        <div class="form-error" id="err-correo"></div>
+      </div>
+      <div>
+        <label for="telefono">Número de WhatsApp o teléfono <span style="color:#ff6060">*</span></label>
+        <input type="tel" id="telefono" name="telefono" maxlength="20" pattern="[ 0-9+()-]{8,20}" placeholder="Ej: +50371234567" required value="${datosEntrega.telefono||''}" />
+        <div class="form-error" id="err-telefono"></div>
+      </div>
+      <button class="pay-ws-btn" type="submit">Finalizar pedido</button>
+    </form>
+  `;
+  document.getElementById('form-datos-entrega').onsubmit = function(e) {
+    e.preventDefault();
+    if (validarDatosEntrega()) {
+      lanzarConfeti();
+      setTimeout(() => {
+        window.open(getWhatsAppLink(), '_blank');
+      }, 250);
+    }
+  };
+}
+function validarDatosEntrega() {
+  let ok = true;
+  let nombre = document.getElementById('nombre').value.trim();
+  let correo = document.getElementById('correo').value.trim();
+  let telefono = document.getElementById('telefono').value.trim();
+  datosEntrega.nombre = nombre;
+  datosEntrega.correo = correo;
+  datosEntrega.telefono = telefono;
+
+  const errNombre = document.getElementById('err-nombre');
+  const errCorreo = document.getElementById('err-correo');
+  const errTelefono = document.getElementById('err-telefono');
+  errNombre.classList.remove('active'); errCorreo.classList.remove('active'); errTelefono.classList.remove('active');
+
+  if (!nombre || nombre.length < 3) {
+    errNombre.textContent = 'Ingresa tu nombre completo.'; errNombre.classList.add('active'); ok = false;
+  }
+  if (!correo || !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(correo)) {
+    errCorreo.textContent = 'Correo inválido.'; errCorreo.classList.add('active'); ok = false;
+  }
+  if (!telefono || telefono.length < 8 || !/^[0-9+()\-\s]{8,20}$/.test(telefono)) {
+    errTelefono.textContent = 'Número inválido.'; errTelefono.classList.add('active'); ok = false;
+  }
+  return ok;
+}
 function getWhatsAppLink() {
   const numero = "6PUURM6RIVLZF1";
   let msg = "Hola, quiero comprar:\n";
   carrito.forEach(item => {
     msg += `- ${item.nombre} $${item.monto} x${item.cantidad}\n`;
   });
+  msg += `\nDatos de entrega:\nNombre: ${datosEntrega.nombre}\nCorreo: ${datosEntrega.correo}\nTeléfono: ${datosEntrega.telefono}`;
   msg += "\nQuiero pagar por *transferencia bancaria o efectivo*.\n¿Puedes enviarme instrucciones?";
   return `https://wa.me/message/${numero}?text=${encodeURIComponent(msg)}`;
 }
-
 function lanzarConfeti() {
   if (!window.confettiScript) {
     var script = document.createElement('script');
@@ -609,15 +705,11 @@ function lanzarConfeti() {
     window.confettiScriptLoaded();
   }
 }
-
-function pagarWhatsApp() {
+document.getElementById('pagar-clic-btn').onclick = function() {
   if (carrito.length == 0) { alert("El carrito está vacío."); return; }
-  lanzarConfeti();
-  setTimeout(() => {
-    window.open(getWhatsAppLink(), '_blank');
-  }, 250);
-}
-/* --------- RUTAS/Navigation ----------- */
+  renderFormDatos();
+  document.getElementById('form-datos-entrega').scrollIntoView({behavior:'smooth'});
+};
 window.onhashchange = function(){
   const page = (location.hash || "#inicio").replace('#','');
   handleNav(page);
