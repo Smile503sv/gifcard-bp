@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>gifcard-bp | Tienda de Códigos Digitales</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
+  <link rel="stylesheet" href="styles.css"/>
+  <!-- estilos en styles.css -->
+
     body {
       margin: 0; font-family: 'Roboto', Arial, sans-serif; background: #f6f7fa;
       color: #202224; min-height: 100vh; box-sizing: border-box;
@@ -25,16 +27,6 @@
       color: #222; font-weight: 700; font-size: 1rem; padding: 5px 2px; transition: color 0.16s;
     }
     .navbar-menu li a:hover, .navbar-menu .active a { color: #e30613; }
-
-    /* Modales Registro / Login */
-    .modal { display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); align-items:center; justify-content:center; z-index:3000; }
-    .modal-content { background:#fff; padding:24px 28px 32px 28px; border-radius:12px; width:90%; max-width:380px; box-shadow:0 4px 18px rgba(0,0,0,0.15); position:relative; animation:fadein 0.25s; }
-    .modal-content h2 { margin-top:0; color:#e30613; font-size:1.4rem; font-weight:900; text-align:center; }
-    .close-modal { position:absolute; top:12px; right:14px; font-size:1.4rem; cursor:pointer; border:none; background:none; color:#aaa; }
-    .modal-content input { width:100%; margin-bottom:12px; padding:11px 12px; border:1px solid #ccc; border-radius:7px; font-size:1rem; box-sizing:border-box; }
-    .modal-content button { width:100%; padding:12px 0; background:#e30613; color:#fff; font-weight:700; border:none; border-radius:8px; font-size:1.05rem; cursor:pointer; transition:background 0.18s; box-shadow:0 3px 12px rgba(227,6,19,0.12); }
-    .modal-content button:hover { background:#b40410; }
-
     .banner {
       background: linear-gradient(90deg,#e30613 75%,#fff 100%);
       color: #fff; padding: 38px 0 36px 0; text-align: center; border-radius: 0 0 18px 18px;
@@ -47,7 +39,14 @@
     }
     .banner p {margin: 12px 0 0 0; font-size: 1.18rem; font-weight: 500;}
     .carousel-container { margin:34px auto 12px auto;max-width:930px;position:relative;overflow:hidden; border-radius:22px; box-shadow:0 4px 32px rgba(0,0,0,0.10);}
-    .carousel-slide { display:flex; transition:transform 0.5s cubic-bezier(.4,0,.2,1);}    .carousel-item { min-width:100%; box-sizing:border-box; display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#fff 60%,#f8dada18 100%);}    .carousel-item img { width:260px; height:145px; object-fit:contain; border-radius:20px; margin-right:42px; box-shadow:0 3px 22px rgba(227,6,19,0.07);}    .carousel-info { max-width:420px; }    .carousel-info h2 { color:#e30613; font-size:1.62rem; font-weight:900; margin-bottom:9px; }    .carousel-info p { color:#444; font-size:1.13rem; margin-bottom:13px;}    .carousel-dots {text-align:center;margin-top:9px;}    .carousel-dots button {
+    .carousel-slide { display:flex; transition:transform 0.5s cubic-bezier(.4,0,.2,1);}
+    .carousel-item { min-width:100%; box-sizing:border-box; display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#fff 60%,#f8dada18 100%);}
+    .carousel-item img { width:260px; height:145px; object-fit:contain; border-radius:20px; margin-right:42px; box-shadow:0 3px 22px rgba(227,6,19,0.07);}
+    .carousel-info { max-width:420px; }
+    .carousel-info h2 { color:#e30613; font-size:1.62rem; font-weight:900; margin-bottom:9px; }
+    .carousel-info p { color:#444; font-size:1.13rem; margin-bottom:13px;}
+    .carousel-dots {text-align:center;margin-top:9px;}
+    .carousel-dots button {
       border:none; width:11px; height:11px; border-radius:50%; background:#eee; margin:0 6px; cursor:pointer; transition:background 0.22s;
     }
     .carousel-dots button.active { background:#e30613; }
@@ -69,10 +68,14 @@
       position:relative;
       overflow:hidden;
     }
-    .product:hover { box-shadow:0 6px 26px rgba(227,6,19,0.13);transform:translateY(-6px) scale(1.025);}    .product img {width:78px;height:78px;object-fit:contain;margin-bottom:12px;border-radius:15px;background:#fff;}    .product h2 {
+    .product:hover { box-shadow:0 6px 26px rgba(227,6,19,0.13);transform:translateY(-6px) scale(1.025);}
+    .product img {width:78px;height:78px;object-fit:contain;margin-bottom:12px;border-radius:15px;background:#fff;}
+    .product h2 {
       font-size:1.09rem;margin:0 0 10px 0;color:#e30613;font-weight:900;cursor:pointer; transition: color 0.13s;
     }
-    .product h2:hover {color:#b60411;}    .product p {color:#444;font-size:0.97rem;margin-bottom:9px;min-height:36px;}    .select-monto {
+    .product h2:hover {color:#b60411;}
+    .product p {color:#444;font-size:0.97rem;margin-bottom:9px;min-height:36px;}
+    .select-monto {
       margin-bottom:10px;padding:6px 6px;border-radius:7px;border:1px solid #e30613;font-weight:700;color:#d60010;
     }
     .add-cart-btn {
@@ -80,27 +83,36 @@
       font-weight:700;display:inline-block;margin-top:7px;transition:background 0.2s, transform .13s;
       border:none;cursor:pointer; box-shadow:0 3px 14px rgba(227,6,19,0.08);
     }
-    .add-cart-btn:hover {background:#b40410;transform:scale(1.06);}    .product-detail-img {width:124px;height:124px;object-fit:contain;border-radius:20px;margin-bottom:18px;}    .product-detail-title {font-size:1.45rem;font-weight:900;color:#e30613;margin:0 0 13px 0;}    .product-detail-desc {color:#232323;font-size:1.05rem;margin-bottom:17px;white-space:pre-line;}    .back-link {color:#e30613;text-decoration:underline;cursor:pointer;font-weight:700;margin-bottom:14px;display:inline-block;}    .cart-btn-float {
+    .add-cart-btn:hover {background:#b40410;transform:scale(1.06);}
+    .product-detail-img {width:124px;height:124px;object-fit:contain;border-radius:20px;margin-bottom:18px;}
+    .product-detail-title {font-size:1.45rem;font-weight:900;color:#e30613;margin:0 0 13px 0;}
+    .product-detail-desc {color:#232323;font-size:1.05rem;margin-bottom:17px;white-space:pre-line;}
+    .back-link {color:#e30613;text-decoration:underline;cursor:pointer;font-weight:700;margin-bottom:14px;display:inline-block;}
+    .cart-btn-float {
       position:fixed;bottom:34px;right:32px;background:#e30613;color:#fff;border-radius:50%;width:62px;height:62px;
       box-shadow:0 7px 34px rgba(227,6,19,0.13);font-size:2.18rem;border:none;display:flex;align-items:center;justify-content:center;
       cursor:pointer;z-index:1001;outline:none;transition:background 0.13s;
     }
-    .cart-btn-float:hover {background:#b40410;}    .cart-panel {
+    .cart-btn-float:hover {background:#b40410;}
+    .cart-panel {
       position:fixed;right:0;top:0;width:340px;height:100vh;background:#fff;box-shadow:-3px 0 16px rgba(0,0,0,0.11);
       z-index:2000;transform:translateX(110%);transition:transform 0.3s;display:flex;flex-direction:column;
     }
-    .cart-panel.open {transform:translateX(0);}    .cart-header {
+    .cart-panel.open {transform:translateX(0);}
+    .cart-header {
       font-size:1.24rem;font-weight:900;color:#e30613;padding:22px 22px 12px 22px;border-bottom:1.5px solid #eee;
       display:flex;align-items:center;justify-content:space-between;
     }
     .cart-close-btn {
       font-size:1.5rem;background:none;border:none;color:#999;cursor:pointer;
     }
-    .cart-items {flex:1;overflow-y:auto;padding:18px 18px 0 18px;}    .cart-item {
+    .cart-items {flex:1;overflow-y:auto;padding:18px 18px 0 18px;}
+    .cart-item {
       display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0f0f0;
       padding-bottom:8px;margin-bottom:12px;
     }
-    .cart-item span {font-size:0.99rem;}    .cart-remove-btn {
+    .cart-item span {font-size:0.99rem;}
+    .cart-remove-btn {
       background:none;border:none;color:#e30613;font-size:1.1rem;cursor:pointer;font-weight:900;
     }
     .cart-total {
@@ -112,10 +124,15 @@
     .pay-ws-btn,.pay-bac-btn {
       padding:11px 0;font-size:1rem;border-radius:7px;font-weight:700;border:none;cursor:pointer;margin-bottom:4px;
     }
-    .pay-ws-btn {background:#22c95c;color:#fff;}    .pay-ws-btn:hover {background:#109140;}    .pay-bac-btn {background:#e30613;color:#fff;}    .pay-bac-btn:hover {background:#b40410;}    .cart-panel-bg {
+    .pay-ws-btn {background:#22c95c;color:#fff;}
+    .pay-ws-btn:hover {background:#109140;}
+    .pay-bac-btn {background:#e30613;color:#fff;}
+    .pay-bac-btn:hover {background:#b40410;}
+    .cart-panel-bg {
       display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.19);z-index:1001;
     }
-    .cart-panel.open ~ .cart-panel-bg {display:block;}    .footer {
+    .cart-panel.open ~ .cart-panel-bg {display:block;}
+    .footer {
       text-align:center;color:#444;font-size:1.04rem;padding:32px 0 15px 0;
     }
     @media (max-width:950px){
@@ -133,7 +150,7 @@
       .carousel-info{max-width:90vw;}
       .carousel-item img{margin-right:0;}
     }
-  </style>
+
 </head>
 <body>
   <nav class="navbar">
@@ -143,9 +160,7 @@
         <li><a href="#inicio" data-page="inicio">Inicio</a></li>
         <li><a href="#productos" data-page="productos">Productos</a></li>
         <li><a href="#contacto" data-page="contacto">Contacto</a></li>
-        <li id="li-register"><a href="#" id="nav-register">Registrarse</a></li>
-        <li id="li-login"><a href="#" id="nav-login">Iniciar sesión</a></li>
-        <li id="li-user" style="display:none;"><span id="user-greeting"></span> | <a href="#" id="nav-logout">Cerrar sesión</a></li>
+        <li><a id="account-link" style="cursor:pointer;">Mi cuenta</a></li>
       </ul>
     </div>
   </nav>
@@ -173,95 +188,13 @@
     </div>
   </div>
   <div class="cart-panel-bg" id="cart-bg"></div>
-
-  <!-- Modal Registro -->
-  <div class="modal" id="modal-register" onclick="if(event.target.id==='modal-register'){closeModal('modal-register')}">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('modal-register')">&times;</button>
-      <h2>Crear cuenta</h2>
-      <input type="text" id="reg-username" placeholder="Usuario" required>
-      <input type="email" id="reg-email" placeholder="Correo electrónico" required>
-      <input type="password" id="reg-password" placeholder="Contraseña" required>
-      <input type="password" id="reg-password2" placeholder="Confirmar contraseña" required>
-      <button onclick="registerUser()">Registrarse</button>
-    </div>
-  </div>
-
-  <!-- Modal Login -->
-  <div class="modal" id="modal-login" onclick="if(event.target.id==='modal-login'){closeModal('modal-login')}">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('modal-login')">&times;</button>
-      <h2>Iniciar sesión</h2>
-      <input type="text" id="login-user" placeholder="Usuario o correo" required>
-      <input type="password" id="login-pass" placeholder="Contraseña" required>
-      <button onclick="loginUser()">Entrar</button>
-    </div>
-  </div>
-
   <div class="footer">
     &copy; 2025 gifcard-bp<br>
     Entrega inmediata por correo o WhatsApp.<br>
     <small>Diseño inspirado en tiendas líderes, hecho con ❤️ para ti.</small>
   </div>
-<script>
-// -------------------------------------------------------------
-//                  AUTHENTICACIÓN Y USUARIOS
-// -------------------------------------------------------------
-function loadUsers(){ return JSON.parse(localStorage.getItem('users')||'[]'); }
-function saveUsers(arr){ localStorage.setItem('users', JSON.stringify(arr)); }
-function getCurrentUser(){ return JSON.parse(localStorage.getItem('currentUser')||'null'); }
-function setCurrentUser(u){
-  if(u) localStorage.setItem('currentUser', JSON.stringify(u));
-  else localStorage.removeItem('currentUser');
-}
-function updateNavbarAuth(){
-  const cu=getCurrentUser();
-  document.getElementById('li-register').style.display= cu ? 'none' : 'block';
-  document.getElementById('li-login').style.display   = cu ? 'none' : 'block';
-  document.getElementById('li-user').style.display    = cu ? 'block': 'none';
-  if(cu) document.getElementById('user-greeting').textContent='Hola, '+cu.username;
-}
-function openModal(id){ document.getElementById(id).style.display='flex'; }
-function closeModal(id){ document.getElementById(id).style.display='none'; }
-function registerUser(){
-  const username=document.getElementById('reg-username').value.trim();
-  const email=document.getElementById('reg-email').value.trim().toLowerCase();
-  const pass=document.getElementById('reg-password').value;
-  const pass2=document.getElementById('reg-password2').value;
-  if(!username||!email||!pass){ alert('Completa todos los campos.'); return; }
-  if(pass!==pass2){ alert('Las contraseñas no coinciden.'); return; }
-  let users=loadUsers();
-  if(users.find(u=>u.username===username)){ alert('Ese usuario ya existe.'); return; }
-  if(users.find(u=>u.email===email)){ alert('Ese correo ya está registrado.'); return; }
-  users.push({username,email,pass});
-  saveUsers(users);
-  alert('Registro exitoso. Ahora inicia sesión.');
-  closeModal('modal-register');
-  openModal('modal-login');
-}
-function loginUser(){
-  const userField=document.getElementById('login-user').value.trim();
-  const pass=document.getElementById('login-pass').value;
-  let users=loadUsers();
-  let user=users.find(u=> (u.username===userField || u.email===userField.toLowerCase()) && u.pass===pass);
-  if(!user){ alert('Credenciales incorrectas.'); return; }
-  setCurrentUser({username:user.username,email:user.email});
-  updateNavbarAuth();
-  closeModal('modal-login');
-  alert('¡Bienvenido, '+user.username+'!');
-}
-function logoutUser(){ setCurrentUser(null); updateNavbarAuth(); alert('Sesión cerrada.'); }
-// Vincular acciones de navbar
-setTimeout(()=>{ // Asegurar que el DOM esté listo
-  document.getElementById('nav-register').onclick=function(e){e.preventDefault(); openModal('modal-register');};
-  document.getElementById('nav-login').onclick=function(e){e.preventDefault(); openModal('modal-login');};
-  document.getElementById('nav-logout').onclick=function(e){e.preventDefault(); logoutUser();};
-  updateNavbarAuth();
-},0);
-
-// -------------------------------------------------------------
-//                  CARRUSEL DESTACADOS
-// -------------------------------------------------------------
+<!-- JS movido a app.js -->
+<!-- (personaliza tus productos destacados aquí) -------------
 const destacados = [
   {
     img: "https://i.ebayimg.com/images/g/8kEAAOSw4H5oBwax/s-l1600.webp",
@@ -284,6 +217,7 @@ const destacados = [
     texto: "Compra apps, juegos, películas y más en Google Play. Entrega rápida, sin complicaciones."
   },
 ];
+// Carrusel Función
 function renderCarrusel(){
   const slide = document.getElementById("carousel-slide");
   const dots = document.getElementById("carousel-dots");
@@ -318,9 +252,6 @@ renderCarrusel();
 carruselMostrar(0);
 window.carruselAuto = setInterval(()=>carruselIr((carruselIdx+1)%destacados.length), 4200);
 
-// -------------------------------------------------------------
-//                  DATOS PRODUCTOS
-// -------------------------------------------------------------
 const productos = [
   {
     cod: 'play',
@@ -692,98 +623,6 @@ function getBACLink(item) {
   return links[item.cod] && links[item.cod][item.monto] ? links[item.cod][item.monto] : "https://checkout.baccredomatic.com/link-general";
 }
 
-// -------------------------------------------------------------
-//                  CARRITO (con persistencia)
-// -------------------------------------------------------------
-let carrito = [];
-function loadCart(){ carrito = JSON.parse(localStorage.getItem('cart')||'[]'); }
-function saveCart(){ localStorage.setItem('cart', JSON.stringify(carrito)); }
-loadCart();
-
-function agregarAlCarrito(idx, desdeListado) {
-  let monto = desdeListado 
-    ? document.getElementById(`monto-${idx}`).value
-    : document.getElementById(`detalle-monto`).value;
-  let prod = productos[idx];
-  const key = prod.cod + '-' + monto;
-  let encontrado = carrito.find(item => item.key === key);
-  if (encontrado) {
-    encontrado.cantidad += 1;
-  } else {
-    carrito.push({ key, nombre: prod.nombre, cod: prod.cod, monto: Number(monto), cantidad: 1 });
-  }
-  saveCart();
-  mostrarCarrito();
-}
-function mostrarCarrito() {
-  const panel = document.getElementById('cart-panel');
-  const itemsDiv = document.getElementById('cart-items');
-  const totalDiv = document.getElementById('cart-total');
-  itemsDiv.innerHTML = '';
-  let total = 0;
-  carrito.forEach((item, idx) => {
-    const subtotal = item.cantidad * item.monto;
-    total += subtotal;
-    const itemDiv = document.createElement('div');
-    itemDiv.className = 'cart-item';
-    itemDiv.innerHTML = `
-      <span>${item.nombre} <b>$${item.monto}</b> x${item.cantidad}</span>
-      <button class="cart-remove-btn" onclick="quitarDelCarrito(${idx})">&times;</button>
-    `;
-    itemsDiv.appendChild(itemDiv);
-  });
-  totalDiv.innerHTML = carrito.length ? `Total: <b>$${total}</b> USD` : '<span style="color:#888">Tu carrito está vacío.</span>';
-  abrirCarrito();
-}
-function quitarDelCarrito(idx) {
-  carrito.splice(idx, 1);
-  saveCart();
-  mostrarCarrito();
-}
-function abrirCarrito() {
-  document.getElementById('cart-panel').classList.add('open');
-  document.getElementById('cart-bg').style.display = 'block';
-}
-function cerrarCarrito() {
-  document.getElementById('cart-panel').classList.remove('open');
-  document.getElementById('cart-bg').style.display = 'none';
-}
-// Botones carrito
-setTimeout(()=>{
-  document.getElementById('cart-btn').onclick = mostrarCarrito;
-  document.getElementById('close-cart').onclick = cerrarCarrito;
-  document.getElementById('cart-bg').onclick = cerrarCarrito;
-},0);
-
-// -------------------------------------------------------------
-//                  WHATSAPP & BAC LINKS
-// -------------------------------------------------------------
-function getBACLink(item) {
-  // ... (misma función original) ...
-  return "https://checkout.baccredomatic.com/link-general"; // placeholder
-}
-function getWhatsAppLink() {
-  const numero = "50371234567";
-  let msg = "Hola, quiero comprar:\n";
-  carrito.forEach(item => { msg += `- ${item.nombre} $${item.monto} x${item.cantidad}\n`; });
-  msg += "\n¿Puedes enviarme instrucciones de pago?";
-  return `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
-}
-function pagarWhatsApp() {
-  if (carrito.length == 0) { alert("El carrito está vacío."); return; }
-  window.open(getWhatsAppLink(), '_blank');
-}
-function pagarBAC() {
-  if (carrito.length == 0) { alert("El carrito está vacío."); return; }
-  if (carrito.length > 1) { alert("Solo puedes pagar un producto por transacción BAC. Quita los demás para continuar."); return; }
-  let item = carrito[0];
-  let url = getBACLink(item);
-  window.open(url, '_blank');
-}
-
-// -------------------------------------------------------------
-//                  PÁGINAS DINÁMICAS
-// -------------------------------------------------------------
 function renderInicio() {
   document.getElementById('main-content').innerHTML = `
     <h2 style="text-align:center;margin-top:24px;">Bienvenido a gifcard-bp</h2>
@@ -864,23 +703,110 @@ function handleNav(page) {
   else if(page === 'contacto') renderContacto();
   else renderInicio();
 }
-// Navegación hash
-window.onhashchange = function(){ const page = (location.hash || "#inicio").replace('#',''); handleNav(page); };
+let carrito = [];
+function agregarAlCarrito(idx, desdeListado) {
+  let monto = desdeListado 
+    ? document.getElementById(`monto-${idx}`).value
+    : document.getElementById(`detalle-monto`).value;
+  let prod = productos[idx];
+  const key = prod.cod + '-' + monto;
+  let encontrado = carrito.find(item => item.key === key);
+  if (encontrado) {
+    encontrado.cantidad += 1;
+  } else {
+    carrito.push({ key, nombre: prod.nombre, cod: prod.cod, monto: Number(monto), cantidad: 1 });
+  }
+  mostrarCarrito();
+}
+function mostrarCarrito() {
+  const panel = document.getElementById('cart-panel');
+  const itemsDiv = document.getElementById('cart-items');
+  const totalDiv = document.getElementById('cart-total');
+  itemsDiv.innerHTML = '';
+  let total = 0;
+  carrito.forEach((item, idx) => {
+    const subtotal = item.cantidad * item.monto;
+    total += subtotal;
+    const itemDiv = document.createElement('div');
+    itemDiv.className = 'cart-item';
+    itemDiv.innerHTML = `
+      <span>${item.nombre} <b>$${item.monto}</b> x${item.cantidad}</span>
+      <button class="cart-remove-btn" onclick="quitarDelCarrito(${idx})">&times;</button>
+    `;
+    itemsDiv.appendChild(itemDiv);
+  });
+  totalDiv.innerHTML = carrito.length ? `Total: <b>$${total}</b> USD` : '<span style="color:#888">Tu carrito está vacío.</span>';
+  abrirCarrito();
+}
+function quitarDelCarrito(idx) {
+  carrito.splice(idx, 1);
+  mostrarCarrito();
+}
+function abrirCarrito() {
+  document.getElementById('cart-panel').classList.add('open');
+  document.getElementById('cart-bg').style.display = 'block';
+}
+function cerrarCarrito() {
+  document.getElementById('cart-panel').classList.remove('open');
+  document.getElementById('cart-bg').style.display = 'none';
+}
+document.getElementById('cart-btn').onclick = mostrarCarrito;
+document.getElementById('close-cart').onclick = cerrarCarrito;
+document.getElementById('cart-bg').onclick = cerrarCarrito;
+function getWhatsAppLink() {
+  const numero = "50371234567";
+  let msg = "Hola, quiero comprar:\n";
+  carrito.forEach(item => {
+    msg += `- ${item.nombre} $${item.monto} x${item.cantidad}\n`;
+  });
+  msg += "\n¿Puedes enviarme instrucciones de pago?";
+  return `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+}
+function pagarWhatsApp() {
+  if (carrito.length == 0) { alert("El carrito está vacío."); return; }
+  window.open(getWhatsAppLink(), '_blank');
+}
+function pagarBAC() {
+  if (carrito.length == 0) { alert("El carrito está vacío."); return; }
+  if (carrito.length > 1) { alert("Solo puedes pagar un producto por transacción BAC. Quita los demás para continuar."); return; }
+  let item = carrito[0];
+  let url = getBACLink(item);
+  window.open(url, '_blank');
+}
+window.onhashchange = function(){
+  const page = (location.hash || "#inicio").replace('#','');
+  handleNav(page);
+};
 handleNav((location.hash || "#inicio").replace('#',''));
 
+// --------- LA LÍNEA CLAVE PARA QUE EL MENÚ FUNCIONE SIEMPRE --------
+document.querySelectorAll('.navbar-menu li a').forEach(link=>{
+  link.onclick = function(e){ 
+    e.preventDefault(); 
+    const page = this.getAttribute('data-page');
+    if (location.hash === '#' + page) {
+      handleNav(page);
+    } else {
+      location.hash = '#' + page;
+    }
+  }
+});
 // ---------------------------------------------------------------------
-//         MENÚ NAVBAR: FORZAR REDERENDER AL DAR CLICK (MOBILES)
-// ---------------------------------------------------------------------
-setTimeout(()=>{
-  document.querySelectorAll('.navbar-menu li a[data-page]').forEach(link=>{
-    link.onclick = function(e){ 
-      e.preventDefault(); 
-      const page = this.getAttribute('data-page');
-      if(location.hash === '#' + page){ handleNav(page); }
-      else{ location.hash = '#' + page; }
-    };
-  });
-},0);
 </script>
+  <!-- Auth Modal -->
+  <div id="auth-modal">
+    <div class="auth-box">
+      <h2 id="auth-title">Iniciar sesión</h2>
+      <form id="auth-form">
+        <input type="text" id="auth-name" placeholder="Nombre" style="display:none;"/>
+        <input type="email" id="auth-email" placeholder="Correo electrónico" required/>
+        <input type="password" id="auth-pass" placeholder="Contraseña" minlength="6" required/>
+        <button type="submit" class="primary-btn" id="auth-submit">Entrar</button>
+        <button type="button" class="close-btn" id="auth-toggle">Crear cuenta</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
